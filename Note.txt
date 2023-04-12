@@ -32,3 +32,16 @@ to higher in the MINIMUM number of movements.
 External functions allowed:
 		read, write, malloc, free, exit
 		ft_printf, libft
+
+----------------------------------------------------------------------------------
+
+	Parse Stack, it comes as char * in argv. Then allocate memory for t_list
+sizeof Stack. Then move everything and good luck.
+
+	To parse use ft_atoi... There will be an argument for each number of the
+stack. 
+	First, calculate the whole size of the list, then, allocate memory for the
+whole t_list and allocate each value correctly. Remember that since we'll be
+using two stacks, two stacks must be allocated, A && B.
+	Then >> Check for the lowest number and if the numbers above it can be
+moved to the other stack.
