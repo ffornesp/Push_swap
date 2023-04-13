@@ -35,6 +35,13 @@ External functions allowed:
 
 ----------------------------------------------------------------------------------
 
+IN ORDER TO COMPILE WITH A .a LIBRARY:
+	Include the header file of the library including it's directory.
+	Compile all .c files and the .a library together.
+	Enjoy
+
+----------------------------------------------------------------------------------
+
 	Parse Stack, it comes as char * in argv. Then allocate memory for t_list
 sizeof Stack. Then move everything and good luck.
 
