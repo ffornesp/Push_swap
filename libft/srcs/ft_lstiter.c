@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 09:33:07 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/14 10:16:02 by ffornes-         ###   ########.fr       */
+/*   Created: 2022/01/26 18:17:19 by ffornes-          #+#    #+#             */
+/*   Updated: 2023/04/14 10:50:08 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../include/libft.h"
 
-void	push_swap(char	*str)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	t_list	*stack_a;
+	t_list	*last_elem;
 
-	stack_a = (struct t_list*)malloc(sizeof(struct t_list));
-	if (!stack_a)
+	if (!lst || !f)
 		return ;
-	parse(str, &stack_a);
-	return ;
-}
-
-int	main(int argc, char *argv[])
-{
-	if (argc == 2)
-		push_swap(argv[1]);
-	return (0);
+	last_elem = NULL;
+	if (lst->next == NULL)
+		f (lst->content);
+	else
+	{
+		while (lst)
+		{
+			last_elem = lst;
+			lst = lst->next;
+			f(last_elem->content);
+		}
+	}
 }

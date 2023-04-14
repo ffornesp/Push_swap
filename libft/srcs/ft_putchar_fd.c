@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 09:33:07 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/14 10:16:02 by ffornes-         ###   ########.fr       */
+/*   Created: 2022/01/18 13:53:58 by ffornes-          #+#    #+#             */
+/*   Updated: 2023/04/14 10:52:12 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../include/libft.h"
 
-void	push_swap(char	*str)
+void	ft_putchar_fd(char c, int fd)
 {
-	t_list	*stack_a;
-
-	stack_a = (struct t_list*)malloc(sizeof(struct t_list));
-	if (!stack_a)
-		return ;
-	parse(str, &stack_a);
-	return ;
-}
-
-int	main(int argc, char *argv[])
-{
-	if (argc == 2)
-		push_swap(argv[1]);
-	return (0);
+	write(fd, &c, 1);
 }

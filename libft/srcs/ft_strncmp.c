@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 09:33:07 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/14 10:16:02 by ffornes-         ###   ########.fr       */
+/*   Created: 2022/01/12 12:06:19 by ffornes-          #+#    #+#             */
+/*   Updated: 2023/04/14 10:54:40 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../include/libft.h"
 
-void	push_swap(char	*str)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	t_list	*stack_a;
+	size_t	i;
 
-	stack_a = (struct t_list*)malloc(sizeof(struct t_list));
-	if (!stack_a)
-		return ;
-	parse(str, &stack_a);
-	return ;
-}
-
-int	main(int argc, char *argv[])
-{
-	if (argc == 2)
-		push_swap(argv[1]);
-	return (0);
+	i = 0;
+	while ((s1[i] || s2[i]) && i < n)
+	{
+		if (s1[i] == s2[i])
+			i++;
+		else
+			break ;
+	}
+	if (i == n)
+		return (0);
+	else
+		return (*(unsigned char *)(s1 + i) - *(unsigned char *)(s2 + i));
 }

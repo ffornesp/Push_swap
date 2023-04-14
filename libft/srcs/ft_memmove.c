@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 09:33:07 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/14 10:16:02 by ffornes-         ###   ########.fr       */
+/*   Created: 2022/01/11 11:43:34 by ffornes-          #+#    #+#             */
+/*   Updated: 2023/04/14 10:51:52 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../include/libft.h"
 
-void	push_swap(char	*str)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	t_list	*stack_a;
+	char		*str1;
+	const char	*str2;
 
-	stack_a = (struct t_list*)malloc(sizeof(struct t_list));
-	if (!stack_a)
-		return ;
-	parse(str, &stack_a);
-	return ;
-}
-
-int	main(int argc, char *argv[])
-{
-	if (argc == 2)
-		push_swap(argv[1]);
-	return (0);
+	str1 = (char *)dst;
+	str2 = (const char *)src;
+	if (str2 < str1)
+	{
+		while (len--)
+			str1[len] = str2[len];
+		return (dst);
+	}
+	return (ft_memcpy(str1, str2, len));
 }

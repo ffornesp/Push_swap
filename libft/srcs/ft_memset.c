@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 09:33:07 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/14 10:16:02 by ffornes-         ###   ########.fr       */
+/*   Created: 2022/01/10 13:18:07 by ffornes-          #+#    #+#             */
+/*   Updated: 2023/04/14 10:52:03 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../include/libft.h"
 
-void	push_swap(char	*str)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	t_list	*stack_a;
+	unsigned char	*str;
+	size_t			size;
 
-	stack_a = (struct t_list*)malloc(sizeof(struct t_list));
-	if (!stack_a)
-		return ;
-	parse(str, &stack_a);
-	return ;
-}
-
-int	main(int argc, char *argv[])
-{
-	if (argc == 2)
-		push_swap(argv[1]);
-	return (0);
+	str = (unsigned char *)b;
+	size = 0;
+	while (size < len)
+	{
+		str[size] = (unsigned char)c;
+		size++;
+	}
+	return (b);
 }

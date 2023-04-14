@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 09:33:07 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/14 10:16:02 by ffornes-         ###   ########.fr       */
+/*   Created: 2022/01/12 15:34:20 by ffornes-          #+#    #+#             */
+/*   Updated: 2023/04/14 10:53:44 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../include/libft.h"
 
-void	push_swap(char	*str)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
-	t_list	*stack_a;
+	size_t	size1;
+	size_t	size2;
+	char	*str;
 
-	stack_a = (struct t_list*)malloc(sizeof(struct t_list));
-	if (!stack_a)
-		return ;
-	parse(str, &stack_a);
-	return ;
-}
-
-int	main(int argc, char *argv[])
-{
-	if (argc == 2)
-		push_swap(argv[1]);
-	return (0);
+	size1 = ft_strlen((char *)s1);
+	size2 = ft_strlen((char *)s2);
+	str = malloc (sizeof(char) * (size1 + size2 + 1));
+	if (!str)
+		return (NULL);
+	ft_strlcpy(str, s1, size1 + 1);
+	ft_strlcat((char *)(str + size1), s2, size2 + 1);
+	return (str);
 }

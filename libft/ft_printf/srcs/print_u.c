@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   print_u.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 09:33:07 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/14 10:16:02 by ffornes-         ###   ########.fr       */
+/*   Created: 2022/10/03 18:42:41 by ffornes-          #+#    #+#             */
+/*   Updated: 2023/04/14 10:45:15 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../include/ft_printf.h"
 
-void	push_swap(char	*str)
+int	print_u(va_list args, int count)
 {
-	t_list	*stack_a;
+	unsigned long	i;
+	int				j;
+	char			str[20];
 
-	stack_a = (struct t_list*)malloc(sizeof(struct t_list));
-	if (!stack_a)
-		return ;
-	parse(str, &stack_a);
-	return ;
-}
-
-int	main(int argc, char *argv[])
-{
-	if (argc == 2)
-		push_swap(argv[1]);
-	return (0);
+	i = (unsigned long)va_arg(args, unsigned int);
+	j = 0;
+	if (i == 0)
+		str[j++] = '0';
+	while (i > 0)
+	{
+		str[j++] = (i % 10) + '0';
+		if (i < 10)
+			break ;
+		else
+			i /= 10;
+	}
+	count += j;
+	while (j--)
+		ft_putchar_fd(str[j], 1);
+	return (count);
 }
