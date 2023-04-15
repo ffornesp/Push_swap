@@ -1,31 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   print_p.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/12 12:06:19 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/14 10:54:40 by ffornes-         ###   ########.fr       */
+/*   Created: 2022/10/03 18:42:50 by ffornes-          #+#    #+#             */
+/*   Updated: 2023/04/14 10:44:54 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	print_p(va_list args, int count)
 {
-	size_t	i;
+	unsigned long	ptr;
+	char			out[20];
+	int				i;
 
+	ptr = (unsigned long)va_arg(args, char *);
 	i = 0;
-	while ((s1[i] || s2[i]) && i < n)
+	if (!ptr || ptr == 0)
+		out[i++] = '0';
+	while (ptr > 0)
 	{
-		if (s1[i] == s2[i])
-			i++;
+		if (ptr % 16 >= 10)
+			out[i++] = ((ptr % 16) - 10 + 'a');
 		else
-			break ;
+			out[i++] = ((ptr % 16) + '0');
+		ptr /= 16;
 	}
-	if (i == n)
-		return (0);
-	else
-		return (*(unsigned char *)(s1 + i) - *(unsigned char *)(s2 + i));
+	out[i++] = 'x';
+	out[i++] = '0';
+	count += i;
+	while (i-- > 0)
+		ft_putchar_fd(out[i], 1);
+	return (count);
 }

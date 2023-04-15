@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   print_d.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/12 12:49:48 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/14 10:51:28 by ffornes-         ###   ########.fr       */
+/*   Created: 2022/10/03 17:16:58 by ffornes-          #+#    #+#             */
+/*   Updated: 2023/04/14 10:44:42 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+int	print_d(va_list args, int count)
 {
-	size_t	i;
+	long int	i;
 
-	i = 0;
-	while (i < n)
+	i = (long int)va_arg(args, int);
+	ft_putnbr_fd(i, 1);
+	if (i <= 0)
+		count++;
+	if (i < 0)
+		i *= -1;
+	while (i != 0)
 	{
-		if (((unsigned char *)s1)[i] != ((unsigned char *)s2)[i])
-			return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
-		i++;
+		if (i < 10)
+			i = 0;
+		i /= 10;
+		count++;
 	}
-	return (0);
+	return (count);
 }

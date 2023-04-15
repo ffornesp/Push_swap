@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/12 12:49:48 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/14 10:51:28 by ffornes-         ###   ########.fr       */
+/*   Created: 2022/09/07 16:21:05 by ffornes-          #+#    #+#             */
+/*   Updated: 2022/09/13 16:14:29 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
-{
-	size_t	i;
+# include "libft.h"
 
-	i = 0;
-	while (i < n)
-	{
-		if (((unsigned char *)s1)[i] != ((unsigned char *)s2)[i])
-			return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
-		i++;
-	}
-	return (0);
-}
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1000
+# endif
+
+char	*get_next_line(int fd);
+char	*read_to_buff(int fd, char *buffer, char *line);
+char	*get_line(char *str);
+char	*save_remains(char *str);
+
+#endif

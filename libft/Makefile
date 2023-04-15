@@ -10,11 +10,13 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
+NAME = libft.a
 
-HDR_DIR = include/
-HDR_LIBFT_FILE = libft.h
-HDR_LIBFT = $(addprefix $(HDR_DIR), $(HDR_LIBFT_FILE))
+INCLUDES = include/
+
+###############################################################################
+#									SRCS									  #
+###############################################################################
 
 SRCS_LIBFT_DIR = srcs/
 SRC_FILES =	 ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
@@ -30,10 +32,18 @@ SRC_FILES =	 ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 			 ft_lstmap.c
 SRCS_LIBFT = $(addprefix $(SRCS_LIBFT_DIR), $(SRC_FILES))
 
-SRCS_PRINTF_DIR = ft_printf/srcs/
+SRCS_PRINTF_DIR = ft_printf/
 SRC_PRINTF_FILES = print_c.c print_d.c print_p.c print_s.c print_u.c print_x.c \
 				   ft_printf.c
 SRCS_PRINTF = $(addprefix $(SRCS_PRINTF_DIR), $(SRC_PRINTF_FILES))
+
+SRCS_GNL_DIR = get_next_line/
+SRC_GNL_FILES =	get_next_line.c
+SRCS_GNL = $(addprefix $(SRCS_GNL_DIR), $(SRC_GNL_FILES))
+
+###############################################################################
+#									OBJS									  #
+###############################################################################
 
 OBJS_LIBFT_DIR =	objs/
 OBJ_LIBFT_FILES =	$(SRC_FILES:.c=.o)
@@ -43,26 +53,38 @@ OBJS_PRINTF_DIR =	ft_printf/objs/
 OBJ_PRINTF_FILES =	$(SRC_PRINTF_FILES:.c=.o)
 OBJS_PRINTF = $(addprefix $(OBJS_PRINTF_DIR), $(OBJ_PRINTF_FILES))
 
-OBJS = $(OBJS_LIBFT) $(OBJS_PRINTF)
+OBJS_GNL_DIR =	get_next_line/objs/
+OBJ_GNL_FILES = $(SRC_GNL_FILES:.c=.o)
+OBJS_GNL = $(addprefix $(OBJS_GNL_DIR), $(OBJ_GNL_FILES))
+
+OBJS = $(OBJS_LIBFT) $(OBJS_PRINTF) $(OBJS_GNL)
+
+###############################################################################
+#									OTHER									  #
+###############################################################################
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 AR = ar rc
 
-all: 		$(NAME) $(HDR_LIBFT) $(HDR_PRINTF)
+###############################################################################
+#									RULES									  #
+###############################################################################
 
-$(NAME):	$(OBJS_LIBFT) $(OBJS_PRINTF)
+all: 		$(NAME)
+
+$(NAME):	$(OBJS_LIBFT) $(OBJS_PRINTF) $(OBJS_GNL)
 			$(AR) $@ $(OBJS)
 
-$(OBJS_DIR):
-			mkdir $@
+$(OBJS_LIBFT_DIR)%.o:	$(SRCS_LIBFT_DIR)%.c
+						$(CC) $(CFLAGS) -I $(INCLUDES) -c $< -o $@
 
-$(OBJS_LIBFT_DIR)%.o:	$(SRCS_LIBFT_DIR)%.c $(HDR_LIBFT)
-						$(CC) $(CFLAGS) -I $(HDR_DIR) -c $< -o $@
+$(OBJS_PRINTF_DIR)%.o:	$(SRCS_PRINTF_DIR)%.c
+						$(CC) $(CFLAGS) -I $(INCLUDES) -c $< -o $@
 
-$(OBJS_PRINTF_DIR)%.o:	$(SRCS_PRINTF_DIR)%.c $(HDR_PRINTF)
-						$(CC) $(CFLAGS) -I $(HDR_DIR) -c $< -o $@
+$(OBJS_GNL_DIR)%.o:		$(SRCS_GNL_DIR)%.c
+						$(CC) $(CFLAGS) -I $(INCLUDES) -c $< -o $@
 
 clean: 		
 			@$(RM) $(OBJS)

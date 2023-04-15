@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   print_s.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/12 12:49:48 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/14 10:51:28 by ffornes-         ###   ########.fr       */
+/*   Created: 2022/10/03 17:14:50 by ffornes-          #+#    #+#             */
+/*   Updated: 2023/04/14 10:45:03 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+int	print_s(va_list args, int count)
 {
-	size_t	i;
+	char	*str;
 
-	i = 0;
-	while (i < n)
-	{
-		if (((unsigned char *)s1)[i] != ((unsigned char *)s2)[i])
-			return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
-		i++;
-	}
-	return (0);
+	str = va_arg(args, char *);
+	if (!str)
+		str = "(null)";
+	count += ft_strlen(str);
+	while (*str)
+		ft_putchar_fd(*(str++), 1);
+	return (count);
 }
