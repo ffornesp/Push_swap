@@ -6,26 +6,53 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 09:33:07 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/14 10:16:02 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/17 15:34:45 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	push_swap(char	*str)
+void	ft_lstfree(t_list **lst)
 {
-	t_list	*stack_a;
+	t_list	*aux;
 
-	stack_a = (struct t_list*)malloc(sizeof(struct t_list));
-	if (!stack_a)
-		return ;
-	parse(str, &stack_a);
+	aux = *lst;
+	while (aux)
+	{
+		*lst = aux->next;
+		free(aux);
+		aux = *lst;
+	}
+	*lst = NULL;
+}
+
+void	push_swap(char	**str)
+{
+	parse(str);
+	/*
+	t_list	**stack_a;
+	t_list	*aux;
+
+	stack_a = parse(str);
+	aux = *stack_a;
+	while (aux)
+	{
+		ft_printf("%d\n", (int)aux->content);
+		aux = aux->next;		
+	}
+	*/
+		//ft_lstfree(&stack_a); // THERE IS A MEM LEAK HERE
+	//
 	return ;
 }
 
 int	main(int argc, char *argv[])
 {
-	if (argc == 2)
-		push_swap(argv[1]);
+	if (argc > 1)
+	{
+		push_swap(argv);
+	}
+	else
+		ft_printf("An input is required to run the program\n");
 	return (0);
 }

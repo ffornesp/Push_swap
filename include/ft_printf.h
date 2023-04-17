@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_d.c                                          :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 17:16:58 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/14 10:44:42 by ffornes-         ###   ########.fr       */
+/*   Created: 2022/10/24 16:43:37 by ffornes-          #+#    #+#             */
+/*   Updated: 2023/04/14 13:50:44 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
+# include <stdarg.h>
+# include "libft.h"
 
-int	print_d(va_list args, int count)
-{
-	long int	i;
+int		ft_printf(const char *str, ...);
+int		print_c(va_list args, int count);
+int		print_s(va_list args, int count);
+int		print_p(va_list args, int count);
+int		print_d(va_list args, int count);
+int		print_u(va_list args, int count);
+int		print_x(va_list args, int count, char c);
 
-	i = (long int)va_arg(args, int);
-	ft_putnbr_fd(i, 1);
-	if (i <= 0)
-		count++;
-	if (i < 0)
-		i *= -1;
-	while (i != 0)
-	{
-		if (i < 10)
-			i = 0;
-		i /= 10;
-		count++;
-	}
-	return (count);
-}
+#endif

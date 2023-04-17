@@ -6,13 +6,13 @@
 #    By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/24 19:51:17 by ffornes-          #+#    #+#              #
-#    Updated: 2023/04/14 14:37:20 by ffornes-         ###   ########.fr        #
+#    Updated: 2023/04/17 11:14:18 by ffornes-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-INCLUDES = include/
+INCLUDES = ../include/
 
 ###############################################################################
 #									SRCS									  #
@@ -32,7 +32,7 @@ SRC_FILES =	 ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 			 ft_lstmap.c
 SRCS_LIBFT = $(addprefix $(SRCS_LIBFT_DIR), $(SRC_FILES))
 
-SRCS_PRINTF_DIR = ft_printf/
+SRCS_PRINTF_DIR = ft_printf/srcs/
 SRC_PRINTF_FILES = print_c.c print_d.c print_p.c print_s.c print_u.c print_x.c \
 				   ft_printf.c
 SRCS_PRINTF = $(addprefix $(SRCS_PRINTF_DIR), $(SRC_PRINTF_FILES))

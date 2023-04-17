@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_c.c                                          :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 17:13:37 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/14 10:44:21 by ffornes-         ###   ########.fr       */
+/*   Created: 2022/09/07 16:21:05 by ffornes-          #+#    #+#             */
+/*   Updated: 2022/09/13 16:14:29 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-int	print_c(va_list args, int count)
-{
-	char	c;
+# include "libft.h"
 
-	c = (char)va_arg(args, int);
-	ft_putchar_fd(c, 1);
-	return (count + 1);
-}
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1000
+# endif
+
+char	*get_next_line(int fd);
+char	*read_to_buff(int fd, char *buffer, char *line);
+char	*get_line(char *str);
+char	*save_remains(char *str);
+
+#endif
