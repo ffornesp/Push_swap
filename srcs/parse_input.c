@@ -6,13 +6,45 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 09:53:23 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/17 15:53:51 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/17 17:33:30 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-static t_list	*save_as_tlist(char **input)
+
+static void	check_contents(t_list **stack) // Temp function for testing purposes
+{
+	t_list	*aux;
+
+	aux = *stack;
+	ft_printf("Checking contents of stack...\n");
+	while (aux)
+	{
+		ft_printf("%d\n", aux->content);
+		aux = aux->next;
+	}
+}
+
+static char	*join_input(char **input)
+{
+	char	*out;
+	char	*aux;
+	int		i;
+
+	i = 2;
+	out = input[1];
+	while (input[i])
+	{
+		input[i] = check_zeros(input[i]);
+		out = ft_strjoin(out, " ");
+		out = ft_strjoin(out, input[i++]);
+	}
+	ft_printf("Input joined successfully\n%s\n", out);
+	return (out);
+}
+
+static t_list	*convert_to_tlist(char **input)
 {
 	int		i;
 	int		n;
@@ -22,6 +54,7 @@ static t_list	*save_as_tlist(char **input)
 	i = 0;
 	while (input[i])
 	{
+		input[i] = check_zeros(input[i]);
 		n = ft_atoi(input[i]);
 		if (n || input[i][0] == '0')
 		{
@@ -35,39 +68,10 @@ static t_list	*save_as_tlist(char **input)
 			free(input[i]);
 		}
 		else	// Must free remains of *OUT && all allocated *STACK
-			ft_printf("Error, found a number that isn't an integer\n");
+			ft_printf("Error: Found a number that isn't an integer\n");
 		i++;
 	}
 	return (stack);
-}
-
-static char	*join_input(char **input)
-{
-	char	*out;
-	int		i;
-
-	i = 2;
-	out = input[1];
-	while (input[i])
-	{
-		out = ft_strjoin(out, " ");
-		out = ft_strjoin(out, input[i++]);
-	}
-	ft_printf("Input joined successfully\n%s\n", out);
-	return (out);
-}
-
-static void	check_contents(t_list **stack)
-{
-	t_list	*aux;
-
-	aux = *stack;
-	ft_printf("Checking contents of stack...\n");
-	while (aux)
-	{
-		ft_printf("%d\n", aux->content);
-		aux = aux->next;
-	}
 }
 
 t_list	**parse(char **str)
@@ -79,22 +83,19 @@ t_list	**parse(char **str)
 
 	i = 0;
 	input = join_input(str);
-	if (check_digits(input) > 0)
-	{
-		out = ft_split(input, ' ');
-		free(input);
-		if (!out)
-			return (NULL);
-		ft_printf("Input splitted successfully\n");
-		stack = save_as_tlist(out);
-		check_contents(&stack);
-		/*
-		if (check_duplicates(&stack) > 0)
-			ft_printf("Parse was successful\n");
-		else
-			//ft_lstfree(&stack);
-		return (&stack);
-		*/
-	}
-	return (NULL);
+	if (check_digits(input) < 1)
+		return (NULL);
+	out = ft_split(input, ' ');
+	free(input);
+	if (!out)
+		return (NULL);
+	ft_printf("Input splitted successfully\n");
+	stack = convert_to_tlist(out);
+	if (check_duplicates(&stack) < 1)
+		return (NULL);
+	check_contents(&stack);
+	/*else
+		//ft_lstfree(&stack);
+	*/
+	return (&stack);
 }
