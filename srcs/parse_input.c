@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 09:53:23 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/17 17:33:30 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/18 10:03:22 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static void	check_contents(t_list **stack) // Temp function for testing purposes
 static char	*join_input(char **input)
 {
 	char	*out;
-	char	*aux;
 	int		i;
 
 	i = 2;
@@ -65,7 +64,6 @@ static t_list	*convert_to_tlist(char **input)
 				lst = ft_lstnew(n);
 				ft_lstadd_back(&stack, lst);
 			}
-			free(input[i]);
 		}
 		else	// Must free remains of *OUT && all allocated *STACK
 			ft_printf("Error: Found a number that isn't an integer\n");
@@ -86,7 +84,6 @@ t_list	**parse(char **str)
 	if (check_digits(input) < 1)
 		return (NULL);
 	out = ft_split(input, ' ');
-	free(input);
 	if (!out)
 		return (NULL);
 	ft_printf("Input splitted successfully\n");
@@ -94,8 +91,5 @@ t_list	**parse(char **str)
 	if (check_duplicates(&stack) < 1)
 		return (NULL);
 	check_contents(&stack);
-	/*else
-		//ft_lstfree(&stack);
-	*/
 	return (&stack);
 }
