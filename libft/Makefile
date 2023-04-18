@@ -6,7 +6,7 @@
 #    By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/24 19:51:17 by ffornes-          #+#    #+#              #
-#    Updated: 2023/04/18 16:45:58 by ffornes-         ###   ########.fr        #
+#    Updated: 2023/04/18 17:42:41 by ffornes-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,8 +75,17 @@ AR = ar rc
 
 all: 		$(NAME)
 
-$(NAME):	$(OBJS_LIBFT) $(OBJS_PRINTF) $(OBJS_GNL)
+$(NAME):	$(OBJS_LIBFT_DIR) $(OBJS_PRINTF_DIR) $(OBJS_GNL_DIR) $(OBJS)
 			$(AR) $@ $(OBJS)
+
+$(OBJS_LIBFT_DIR):		
+						@mkdir $(OBJS_LIBFT_DIR)
+
+$(OBJS_PRINTF_DIR):
+						@mkdir $(OBJS_PRINTF_DIR)
+
+$(OBJS_GNL_DIR):
+						@mkdir $(OBJS_GNL_DIR)
 
 $(OBJS_LIBFT_DIR)%.o:	$(SRCS_LIBFT_DIR)%.c
 						$(CC) $(CFLAGS) -I $(INCLUDES) -c $< -o $@
