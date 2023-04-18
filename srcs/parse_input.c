@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 09:53:23 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/18 17:31:42 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/18 17:38:49 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ static t_list	*convert_to_tlist(char **input)
 		free(input[i]);
 		i++;
 	}
+	free(input);
 	return (stack);
 }
 
