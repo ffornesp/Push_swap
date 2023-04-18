@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 16:24:47 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/18 11:56:12 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/18 12:27:38 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 
 #ifndef GREEN
 # define GREEN	"\x1B[32m"
+#endif
+#ifndef YELLOW
+# define YELLOW "\x1B[33m"
 #endif
 #ifndef RED
 # define RED	"\x1B[31m"

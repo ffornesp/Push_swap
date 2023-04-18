@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 10:00:42 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/18 12:15:22 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/18 13:35:55 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ int	check_duplicates(t_list **stack)
 	while (aux)
 	{
 		if (current->content == aux->content)
-		{	
-			ft_printf("Error: Found the number %d twice\n", current->content);
+		{
+			ft_printf(RED"ERROR: "WHITE"Found the number %d twice\n", current->content);
 			return (0);
 		}
 		if (aux->next)
@@ -51,8 +51,8 @@ int	check_duplicates(t_list **stack)
 			aux = current->next;
 		}
 	}
-	ft_printf("No duplicate numbers found in input...\n");
-	ft_printf("Parse was successful\n");
+	ft_printf(GREEN"OK: "WHITE"No duplicate numbers found in input...\n");
+	ft_printf(GREEN"Parse was successful\n"WHITE);
 	return (1);
 }
 
@@ -69,11 +69,11 @@ int	check_digits(char *str)
 			i++;
 		else
 		{
-			ft_printf("Error: Input is invalid\n");
+			ft_printf(RED"ERROR: "WHITE"Input is invalid\n");
 			free(str);
 			return (0);
 		}
 	}
-	ft_printf("The input chars are valid\n");
+	ft_printf(GREEN"OK: "WHITE"Input chars are valid\n");
 	return (1);
 }

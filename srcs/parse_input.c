@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 09:53:23 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/18 12:15:24 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/18 13:35:53 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,14 @@
 static void	check_contents(t_list **stack) // Temp function for testing purposes
 {
 	t_list	*aux;
+	int		*i;
 
 	aux = *stack;
 	ft_printf("Checking contents of stack...\n");
 	while (aux)
 	{
-		ft_printf("%d\n", aux->content);
+		i = aux->content;
+		ft_printf("%d\n", *i);
 		aux = aux->next;
 	}
 }
@@ -39,8 +41,7 @@ static char	*join_input(char **input)
 		out = ft_strjoin(out, " ");
 		out = ft_strjoin(out, input[i++]);
 	}
-	ft_printf(GREEN"OK: ");
-	ft_printf(WHITE"Input joined successfully\n%s\n", out);
+	ft_printf(GREEN"OK: "WHITE"Input joined successfully: "YELLOW"%s\n"WHITE, out);
 	return (out);
 }
 
@@ -48,26 +49,33 @@ static t_list	*convert_to_tlist(char **input)
 {
 	int		i;
 	int		n;
+	int		*k;
 	t_list	*lst;
 	t_list	*stack;
 
 	i = 0;
-	while (input[i])
+	while (input[i]) // Not checking if number is valid int atm
 	{
 		input[i] = check_zeros(input[i]);
+		k = malloc(sizeof(int *) * (2));
 		n = ft_atoi(input[i]);
+		*k = n;
+		ft_printf(YELLOW"K VALUE IS: %d\n", *k);
 		if (n || input[i][0] == '0')
 		{
 			if (i == 0)
-				stack = ft_lstnew(n);
+				stack = ft_lstnew(k);
 			else
 			{
-				lst = ft_lstnew(n);
+				lst = ft_lstnew(k);
 				ft_lstadd_back(&stack, lst);
 			}
 		}
 		else	// Must free remains of *OUT && all allocated *STACK
-			ft_printf("Error: Found a number that isn't an integer\n");
+		{
+			ft_printf(RED"Error: "WHITE"Found a number that isn't an integer\n");
+			exit(1);
+		}
 		i++;
 	}
 	return (stack);
@@ -87,7 +95,7 @@ t_list	*parse(char **str)
 	out = ft_split(input, ' ');
 	if (!out)
 		return (NULL);
-	ft_printf("Input splitted successfully\n");
+	ft_printf(GREEN"OK: "WHITE"Input splitted successfully\n");
 	stack = convert_to_tlist(out);
 	if (check_duplicates(&stack) < 1)
 		return (NULL);
