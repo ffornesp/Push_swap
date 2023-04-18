@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 16:24:47 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/17 16:47:21 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/18 11:56:12 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,19 @@
 # include "ft_printf.h"
 # include <limits.h>
 
+#ifndef GREEN
+# define GREEN	"\x1B[32m"
+#endif
+#ifndef RED
+# define RED	"\x1B[31m"
+#endif
+#ifndef WHITE
+#define WHITE	"\x1B[37m"
+#endif
+
 void	ft_lstfree(t_list **lst);
 void	push_swap(char **str);
-t_list	**parse(char **str);
+t_list	*parse(char **str);
 int		check_digits(char *str);
 int		check_duplicates(t_list **stack);
 char	*check_zeros(char *input);

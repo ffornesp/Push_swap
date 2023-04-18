@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 09:53:23 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/18 10:03:22 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/18 12:15:24 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ static char	*join_input(char **input)
 		out = ft_strjoin(out, " ");
 		out = ft_strjoin(out, input[i++]);
 	}
-	ft_printf("Input joined successfully\n%s\n", out);
+	ft_printf(GREEN"OK: ");
+	ft_printf(WHITE"Input joined successfully\n%s\n", out);
 	return (out);
 }
 
@@ -72,7 +73,7 @@ static t_list	*convert_to_tlist(char **input)
 	return (stack);
 }
 
-t_list	**parse(char **str)
+t_list	*parse(char **str)
 {
 	char	**out;
 	char	*input;
@@ -91,5 +92,5 @@ t_list	**parse(char **str)
 	if (check_duplicates(&stack) < 1)
 		return (NULL);
 	check_contents(&stack);
-	return (&stack);
+	return (stack);
 }
