@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 09:53:23 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/18 16:46:17 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/18 17:31:42 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ static void	check_contents(t_list **stack) // Temp function for testing purposes
 	int		*i;
 
 	aux = *stack;
-	//ft_printf("Checking contents of stack...\n");
+	ft_printf("Checking contents of stack...\n");
 	while (aux)
 	{
 		i = aux->content;
-		//ft_printf("%d\n", *i);
+		ft_printf("%d\n", *i);
 		aux = aux->next;
 	}
 }
@@ -67,12 +67,7 @@ static t_list	*convert_to_tlist(char **input)
 		n = ft_atoi(input[i]);
 		*k = n;
 		if (n || input[i][0] == '0')
-		{
-			if (i == 0)
-				stack = ft_lstnew(k);
-			else
-				ft_lstadd_back(&stack, ft_lstnew(k));
-		}
+			ft_lstadd_back(&stack, ft_lstnew(k));
 		else
 		{
 			//ft_printf(RED"Error: "WHITE"Found a number that isn't an integer\n");
@@ -92,20 +87,25 @@ t_list	*parse(char **str)
 	char	**out;
 	char	*input;
 	t_list	*stack;
-	int		i;
 
-	i = 0;
 	input = join_input(str);
 	if (check_digits(input) < 1)
+	{
+		ft_printf(RED"ERROR: "WHITE"Found invalid chars in input\n");
 		return (NULL);
+	}
+	ft_printf(GREEN"OK: "WHITE"Input is valid\n");
 	out = ft_split(input, ' ');
 	if (!out)
 		return (NULL);
 	free(input);
-	//ft_printf(GREEN"OK: "WHITE"Input splitted successfully\n");
 	stack = convert_to_tlist(out);
 	if (check_duplicates(stack) < 1)
+	{
+		ft_printf(RED"ERROR: "WHITE"Found duplicate numbers\n");
 		return (NULL);
+	}
+	ft_printf(GREEN"OK: "WHITE"No duplicates were found\n");
 	check_contents(&stack);
 	return (stack);
 }
