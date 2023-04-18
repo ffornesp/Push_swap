@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 09:53:23 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/18 16:22:38 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/18 16:46:17 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ static void	check_contents(t_list **stack) // Temp function for testing purposes
 	int		*i;
 
 	aux = *stack;
-	ft_printf("Checking contents of stack...\n");
+	//ft_printf("Checking contents of stack...\n");
 	while (aux)
 	{
 		i = aux->content;
-		ft_printf("%d\n", *i);
+		//ft_printf("%d\n", *i);
 		aux = aux->next;
 	}
 }
@@ -48,7 +48,7 @@ static char	*join_input(char **input)
 		aux = out;
 		i++;
 	}
-	ft_printf(GREEN"OK: "WHITE"Input joined successfully: "YELLOW"%s\n"WHITE, out);
+	//ft_printf(GREEN"OK: "WHITE"Input joined successfully: "YELLOW"%s\n"WHITE, out);
 	return (out);
 }
 
@@ -73,9 +73,12 @@ static t_list	*convert_to_tlist(char **input)
 			else
 				ft_lstadd_back(&stack, ft_lstnew(k));
 		}
-		else	// Must free remains of *OUT && all allocated *STACK
+		else
 		{
-			ft_printf(RED"Error: "WHITE"Found a number that isn't an integer\n");
+			//ft_printf(RED"Error: "WHITE"Found a number that isn't an integer\n");
+			while (input[i])
+				free(input[i++]);
+			ft_lstclear(&stack, (void *)ft_delete);
 			exit(1); 
 		}
 		free(input[i]);
@@ -99,9 +102,9 @@ t_list	*parse(char **str)
 	if (!out)
 		return (NULL);
 	free(input);
-	ft_printf(GREEN"OK: "WHITE"Input splitted successfully\n");
+	//ft_printf(GREEN"OK: "WHITE"Input splitted successfully\n");
 	stack = convert_to_tlist(out);
-	if (check_duplicates(&stack) < 1)
+	if (check_duplicates(stack) < 1)
 		return (NULL);
 	check_contents(&stack);
 	return (stack);

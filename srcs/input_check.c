@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 10:00:42 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/18 16:22:41 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/18 16:48:51 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ char	*check_zeros(char *input)
 	return (input);
 }
 
-int	check_duplicates(t_list **stack) // May need optimization, maybe access **stack directly with i j
+int	check_duplicates(t_list *stack) // May need optimization, maybe access **stack directly with i j
 {
 	t_list	*aux;
 	t_list	*current;
 	int		*i;
 	int		*j;
 
-	current = *stack;
+	current = stack;
 	aux = current->next;
 	while (aux)
 	{
@@ -44,7 +44,7 @@ int	check_duplicates(t_list **stack) // May need optimization, maybe access **st
 		j = aux->content;
 		if (*i == *j)
 		{
-			ft_printf(RED"ERROR: "WHITE"Found the number %d twice\n", *i);
+			//ft_printf(RED"ERROR: "WHITE"Found the number %d twice\n", *i);
 			return (0);
 		}
 		if (aux->next)
@@ -55,7 +55,7 @@ int	check_duplicates(t_list **stack) // May need optimization, maybe access **st
 			aux = current->next;
 		}
 	}
-	ft_printf(GREEN"OK: "WHITE"No duplicate numbers found in input...\n"GREEN"\tPARSE SUCCESSFUL\n"WHITE);
+	//ft_printf(GREEN"OK: "WHITE"No duplicate numbers found in input...\n"GREEN"\tPARSE SUCCESSFUL\n"WHITE);
 	return (1);
 }
 
@@ -72,11 +72,11 @@ int	check_digits(char *str)
 			i++;
 		else
 		{
-			ft_printf(RED"ERROR: "WHITE"Input is invalid\n");
+			//ft_printf(RED"ERROR: "WHITE"Input is invalid\n");
 			free(str);
 			return (0);
 		}
 	}
-	ft_printf(GREEN"OK: "WHITE"Input chars are valid\n");
+	//ft_printf(GREEN"OK: "WHITE"Input chars are valid\n");
 	return (1);
 }
