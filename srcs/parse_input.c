@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 09:53:23 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/18 13:35:53 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/18 13:55:01 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,9 @@ static t_list	*convert_to_tlist(char **input)
 	while (input[i]) // Not checking if number is valid int atm
 	{
 		input[i] = check_zeros(input[i]);
-		k = malloc(sizeof(int *) * (2));
+		k = malloc(sizeof(int *));
 		n = ft_atoi(input[i]);
 		*k = n;
-		ft_printf(YELLOW"K VALUE IS: %d\n", *k);
 		if (n || input[i][0] == '0')
 		{
 			if (i == 0)

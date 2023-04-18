@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 10:00:42 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/18 13:35:55 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/18 13:55:03 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,22 @@ char	*check_zeros(char *input)
 	return (input);
 }
 
-int	check_duplicates(t_list **stack)
+int	check_duplicates(t_list **stack) // May need optimization, maybe access **stack directly with i j
 {
 	t_list	*aux;
 	t_list	*current;
+	int		*i;
+	int		*j;
 
 	current = *stack;
 	aux = current->next;
 	while (aux)
 	{
-		if (current->content == aux->content)
+		i = current->content;
+		j = aux->content;
+		if (*i == *j)
 		{
-			ft_printf(RED"ERROR: "WHITE"Found the number %d twice\n", current->content);
+			ft_printf(RED"ERROR: "WHITE"Found the number %d twice\n", *i);
 			return (0);
 		}
 		if (aux->next)
@@ -51,8 +55,7 @@ int	check_duplicates(t_list **stack)
 			aux = current->next;
 		}
 	}
-	ft_printf(GREEN"OK: "WHITE"No duplicate numbers found in input...\n");
-	ft_printf(GREEN"Parse was successful\n"WHITE);
+	ft_printf(GREEN"OK: "WHITE"No duplicate numbers found in input...\n"GREEN"\tPARSE SUCCESSFUL\n"WHITE);
 	return (1);
 }
 
