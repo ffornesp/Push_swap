@@ -6,12 +6,11 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 09:53:23 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/18 14:59:39 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/18 16:22:38 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-
 
 static void	check_contents(t_list **stack) // Temp function for testing purposes
 {
@@ -44,10 +43,11 @@ static char	*join_input(char **input)
 		input[i] = check_zeros(input[i]);
 		out = ft_strjoin(out, " ");
 		aux = out;
-		out = ft_strjoin(out, input[i++]);
+		out = ft_strjoin(out, input[i]);
 		free(aux);
 		aux = out;
-	}	
+		i++;
+	}
 	ft_printf(GREEN"OK: "WHITE"Input joined successfully: "YELLOW"%s\n"WHITE, out);
 	return (out);
 }
@@ -74,14 +74,13 @@ static t_list	*convert_to_tlist(char **input)
 				ft_lstadd_back(&stack, ft_lstnew(k));
 		}
 		else	// Must free remains of *OUT && all allocated *STACK
-		{	
+		{
 			ft_printf(RED"Error: "WHITE"Found a number that isn't an integer\n");
 			exit(1); 
 		}
 		free(input[i]);
 		i++;
 	}
-	free(k);
 	return (stack);
 }
 
