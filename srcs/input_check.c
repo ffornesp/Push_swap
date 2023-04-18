@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 10:00:42 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/18 16:57:46 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/18 17:01:50 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int	check_duplicates(t_list *stack)
 			aux = current->next;
 		}
 	}
-	ft_printf(GREEN"OK: "WHITE"No duplicate numbers found in input...\n"GREEN"\tPARSE SUCCESSFUL\n"WHITE);
 	return (1);
 }
 
@@ -63,17 +62,15 @@ int	check_digits(char *str)
 	i = 0;
 	while (*(str + i))
 	{
-		if (ft_isdigit(*(str + i)) || *(str + i) == ' ' 
+		if (ft_isdigit(*(str + i)) || *(str + i) == ' '
 			|| ((*(str + i) == '-') && ft_isdigit(*(str + i + 1)))
 			|| ((*(str + i) == '+') && ft_isdigit(*(str + i + 1))))
 			i++;
 		else
 		{
-			//ft_printf(RED"ERROR: "WHITE"Input is invalid\n");
 			free(str);
 			return (0);
 		}
 	}
-	//ft_printf(GREEN"OK: "WHITE"Input chars are valid\n");
 	return (1);
 }
