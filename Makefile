@@ -6,7 +6,7 @@
 #    By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/24 19:51:17 by ffornes-          #+#    #+#              #
-#    Updated: 2023/04/19 11:17:23 by ffornes-         ###   ########.fr        #
+#    Updated: 2023/04/19 11:32:43 by ffornes-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,7 @@ all: 		$(NAME)
 $(LIBFT_DIR)$(LIBFT_FILE):	$(LIBFT_DIR)
 			make -C $(LIBFT_DIR)
 
-$(NAME):	$(OBJS_DIR) $(OBJS) $(OBJS_ACTIONS_DIR) $(OBJS_ACTIONS) $(LIBFT_DIR)$(LIBFT_FILE)
+$(NAME):	$(LIBFT_DIR)$(LIBFT_FILE) $(OBJS_DIR) $(OBJS) $(OBJS_ACTIONS_DIR) $(OBJS_ACTIONS)
 			$(CC) $(INCLUDE) $(OBJS) $(OBJS_ACTIONS) -lft -Llibft/ -o $@
 
 $(OBJS_DIR):

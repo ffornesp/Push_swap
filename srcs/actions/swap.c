@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 09:44:12 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/19 10:53:52 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/19 11:35:52 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 static t_list	*swap(t_list *stack)
 {
+	ft_printf("Swap\n");
+	stack = NULL;
+	/*
 	t_list	*aux;
 	t_list	*first;
 	t_list	*second;
@@ -25,6 +28,8 @@ static t_list	*swap(t_list *stack)
 	ft_lstadd_front(&aux, first);
 	ft_lstadd_front(&aux, second);
 	return (aux);
+	*/
+	return (stack);
 }
 
 void	swap_a(m_stack *stk)

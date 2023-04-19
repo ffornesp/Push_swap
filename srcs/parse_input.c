@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 09:53:23 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/19 10:53:34 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/19 12:27:25 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ static char	*join_input(char **input)
 	int		i;
 
 	i = 2;
-	out = input[1];
-	aux = NULL;
+	out = malloc(sizeof(char *) * (ft_strlen(input[1]) + 1));
+	ft_strlcpy(out, input[1], ft_strlen(input[1]) + 1);
 	while (input[i])
 	{
-		if (aux)
-			free(aux);
+		aux = out;
 		input[i] = check_zeros(input[i]);
 		out = ft_strjoin(out, " ");
+		free(aux);
 		aux = out;
 		out = ft_strjoin(out, input[i]);
 		free(aux);
@@ -59,6 +59,7 @@ static t_list	*convert_to_tlist(char **input)
 	t_list	*stack;
 
 	i = 0;
+	stack = NULL;
 	while (input[i])
 	{
 		input[i] = check_zeros(input[i]);
@@ -66,7 +67,7 @@ static t_list	*convert_to_tlist(char **input)
 		n = ft_atoi(input[i]);
 		*k = n;
 		if (n || input[i][0] == '0')
-			ft_lstadd_back(&stack, ft_lstnew(k));
+		ft_lstadd_back(&stack, ft_lstnew(k));
 		else
 		{
 			while (input[i])
@@ -92,7 +93,8 @@ t_list	*parse(char **str)
 	out = ft_split(input, ' ');
 	if (!out)
 		return (NULL);
-	free(input);
+	if (out[1])
+		free(input);
 	stack = convert_to_tlist(out);
 	free(out);
 	if (check_duplicates(stack) < 1)
