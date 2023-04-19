@@ -12,6 +12,10 @@
 
 NAME = push_swap
 
+LIBFT_DIR = libft/
+LIBFT_FILE = libft.a
+LIBFT = $(addprefix $(LIBFT_DIR), $(LIBFT_FILE))
+
 INCLUDES = include/
 
 ###############################################################################
@@ -45,19 +49,24 @@ AR = ar rc
 
 all: 		$(NAME)
 
-$(NAME):	$(OBJS_DIR) $(OBJS)
-			$(AR) $@ $(OBJS)
+$(NAME):	$(OBJS_DIR) $(OBJS) $(LIBFT_DIR) $(LIBFT_FILE)
+			$(AR) $@ $(OBJS) ### Implementation of LIBFT pending..
 
 $(OBJS_DIR):		
-						@mkdir $(OBJS_DIR)
+						@mkdir $@
+
+$(LIBFT_DIR):
+						@make -C $@
 
 $(OBJS_DIR)%.o:	$(SRCS_DIR)%.c
-				$(CC) $(CFLAGS) -I $(INCLUDES) -lft -Llibft/ -c $< -o $@
+				$(CC) $(CFLAGS) -I $(INCLUDES) -c $< -o $@
 
 clean: 		
+			make -C $(LIBFT_DIR) clean
 			@$(RM) $(OBJS)
 
 fclean: 	clean
+			make -C $(LIBFT_DIR) fclean
 			@$(RM) $(NAME)
 
 re:			fclean all
