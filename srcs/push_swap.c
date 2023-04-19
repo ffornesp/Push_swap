@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 09:33:07 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/19 12:44:04 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/19 13:20:34 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,12 @@ void	push_swap(char	**str)
 	stk->stack_a = parse(str);
 	stk->stack_b = NULL;
 
-	swap_a(stk);
+	//swap_a(stk);
+	push_b(stk);
+	ft_printf(YELLOW"STACK A: \n"WHITE);
 	check_contents(stk->stack_a);
+	ft_printf(YELLOW"STACK B: \n"WHITE);
+	check_contents(stk->stack_b);
 	ft_lstclear(&stk->stack_a, (void *)ft_delete);
 	free(stk);
 	return ;

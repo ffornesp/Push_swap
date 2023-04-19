@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 09:53:23 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/19 12:59:25 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/19 13:17:16 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	check_contents(t_list *stack)
 	int		*i;
 
 	aux = stack;
-	ft_printf(YELLOW"\tSTACK A:\n"WHITE);
 	while (aux)
 	{
 		i = aux->content;
