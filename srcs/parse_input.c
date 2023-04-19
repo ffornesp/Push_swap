@@ -6,11 +6,11 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 09:53:23 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/19 10:27:39 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/19 10:53:34 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "push_swap.h"
 
 void	check_contents(t_list *stack)
 {

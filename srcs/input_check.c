@@ -6,11 +6,11 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 10:00:42 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/18 17:01:50 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/19 10:53:25 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "push_swap.h"
 
 char	*check_zeros(char *input)
 {

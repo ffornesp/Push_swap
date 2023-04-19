@@ -6,7 +6,7 @@
 #    By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/24 19:51:17 by ffornes-          #+#    #+#              #
-#    Updated: 2023/04/18 17:42:41 by ffornes-         ###   ########.fr        #
+#    Updated: 2023/04/19 11:17:23 by ffornes-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,23 +16,29 @@ LIBFT_DIR = libft/
 LIBFT_FILE = libft.a
 LIBFT = $(addprefix $(LIBFT_DIR), $(LIBFT_FILE))
 
-INCLUDES = include/
-
 ###############################################################################
 #									SRCS									  #
 ###############################################################################
 
 SRCS_DIR = srcs/
 SRC_FILES =	 push_swap.c parse_input.c input_check.c
-SRCS = $(addprefix $(SRCS_DIR), $(SRC_FILES))
+SRCS = 	$(addprefix $(SRCS_DIR), $(SRC_FILES))
+
+SRCS_ACTIONS_DIR = actions/
+SRC_ACTION_FILES = swap.c
+SRCS_ACTIONS = $(addprefix $(SRCS_ACTIONS_DIR), $(SRC_ACTION_FILES))
 
 ###############################################################################
 #									OBJS									  #
 ###############################################################################
 
 OBJS_DIR =	objs/
-OBJ_FILES =	$(SRC_FILES:.c=.o)
+OBJ_FILES = $(SRC_FILES:.c=.o)
 OBJS = $(addprefix $(OBJS_DIR), $(OBJ_FILES))
+
+OBJS_ACTIONS_DIR = objs/actions/
+OBJ_ACTION_FILES = $(SRC_ACTION_FILES:.c=.o)
+OBJS_ACTIONS = $(addprefix $(OBJS_ACTIONS_DIR), $(OBJ_ACTION_FILES))
 
 ###############################################################################
 #									OTHER									  #
@@ -42,6 +48,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 AR = ar rc
+INCLUDE  = -I ./include/ -I ./libft/include/
 
 ###############################################################################
 #									RULES									  #
@@ -49,18 +56,22 @@ AR = ar rc
 
 all: 		$(NAME)
 
-$(NAME):	$(OBJS_DIR) $(OBJS) $(LIBFT_DIR) $(LIBFT_FILE)
-			$(AR) $@ $(OBJS) ### Implementation of LIBFT pending..
+$(LIBFT_DIR)$(LIBFT_FILE):	$(LIBFT_DIR)
+			make -C $(LIBFT_DIR)
 
-$(OBJS_DIR):		
+$(NAME):	$(OBJS_DIR) $(OBJS) $(OBJS_ACTIONS_DIR) $(OBJS_ACTIONS) $(LIBFT_DIR)$(LIBFT_FILE)
+			$(CC) $(INCLUDE) $(OBJS) $(OBJS_ACTIONS) -lft -Llibft/ -o $@
+
+$(OBJS_DIR):
+						@mkdir $@
+$(OBJS_ACTIONS_DIR):
 						@mkdir $@
 
-$(LIBFT_DIR):
-						@make -C $@
-
 $(OBJS_DIR)%.o:	$(SRCS_DIR)%.c
-				$(CC) $(CFLAGS) -I $(INCLUDES) -c $< -o $@
+				$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE)
 
+$(OBJS_ACTIONS_DIR)%.o:	$(SRCS_ACTIONS_DIR)%.c
+				$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE)
 clean: 		
 			make -C $(LIBFT_DIR) clean
 			@$(RM) $(OBJS)

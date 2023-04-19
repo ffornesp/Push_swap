@@ -6,11 +6,11 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 09:33:07 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/19 10:34:53 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/19 10:53:42 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "push_swap.h"
 
 void	push_swap(char	**str)
 {

@@ -6,12 +6,13 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 16:24:47 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/19 10:34:55 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/19 10:57:30 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+# include "libft.h"
 # include "ft_printf.h"
 # include <limits.h>
 
