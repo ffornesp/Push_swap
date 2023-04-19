@@ -6,11 +6,11 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 09:44:12 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/19 10:32:22 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/19 10:33:43 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../../include/push_swap.h"
 
 static t_list	*swap(t_list *stack)
 {
