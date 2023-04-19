@@ -6,7 +6,7 @@
 #    By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/24 19:51:17 by ffornes-          #+#    #+#              #
-#    Updated: 2023/04/19 15:54:47 by ffornes-         ###   ########.fr        #
+#    Updated: 2023/04/19 18:11:44 by ffornes-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ LIBFT = $(addprefix $(LIBFT_DIR), $(LIBFT_FILE))
 ###############################################################################
 
 SRCS_DIR = srcs/
-SRC_FILES =	 push_swap.c parse_input.c input_check.c
+SRC_FILES =	 push_swap.c parse_input.c check_input.c check_sort.c sort.c
 SRCS = 	$(addprefix $(SRCS_DIR), $(SRC_FILES))
 
 SRCS_ACTIONS_DIR = actions/

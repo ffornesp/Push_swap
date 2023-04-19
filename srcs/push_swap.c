@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 09:33:07 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/19 15:54:30 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/19 17:37:57 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,22 @@
 
 void	push_swap(char	**str)
 {
+	int		size;
 	m_stack	*stk;
 
 	stk = malloc(sizeof(m_stack));
 	stk->stack_a = parse(str);
 	stk->stack_b = NULL;
+	size = ft_lstsize(stk->stack_a);
 
-	reverse_rotate_a(stk);
-	
+	if (size <= 3)
+		sort_little(stk);
+	// CHECKS
 	ft_printf(YELLOW"  STACK A: \n"WHITE);
 	check_contents(stk->stack_a);
 	ft_printf(YELLOW"  STACK B: \n"WHITE);
 	check_contents(stk->stack_b);
+	
 	ft_lstclear(&stk->stack_a, (void *)ft_delete);
 	free(stk);
 	return ;
