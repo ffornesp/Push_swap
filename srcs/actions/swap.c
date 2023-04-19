@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 09:44:12 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/19 12:45:51 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/19 15:58:00 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	swap_b(m_stack *stk)
 	stk->stack_b = swap(stk->stack_b);
 }
 
-void	swap_ss(m_stack *stk)
+void	swap_s(m_stack *stk)
 {
 	swap_a(stk);
 	swap_b(stk);

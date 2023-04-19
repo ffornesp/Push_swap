@@ -6,7 +6,7 @@
 #    By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/24 19:51:17 by ffornes-          #+#    #+#              #
-#    Updated: 2023/04/19 13:06:48 by ffornes-         ###   ########.fr        #
+#    Updated: 2023/04/19 15:54:47 by ffornes-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRC_FILES =	 push_swap.c parse_input.c input_check.c
 SRCS = 	$(addprefix $(SRCS_DIR), $(SRC_FILES))
 
 SRCS_ACTIONS_DIR = actions/
-SRC_ACTION_FILES = swap.c push.c
+SRC_ACTION_FILES = swap.c push.c rotate.c reverse_rotate.c
 SRCS_ACTIONS = $(addprefix $(SRCS_ACTIONS_DIR), $(SRC_ACTION_FILES))
 
 ###############################################################################

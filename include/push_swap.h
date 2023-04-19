@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 16:24:47 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/19 13:16:04 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/19 16:00:32 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,18 @@ char	*check_zeros(char *input);
 
 void	swap_a(m_stack *stk);
 void	swap_b(m_stack *stk);
-void	swap_ss(m_stack *stk);
+void	swap_s(m_stack *stk);
+
 void	push_a(m_stack *stk);
 void	push_b(m_stack *stk);
+
+void	rotate_a(m_stack *stk);
+void	rotate_b(m_stack *stk);
+void	rotate_r(m_stack *stk);
+
+void	reverse_rotate_a(m_stack *stk);
+void	reverse_rotate_b(m_stack *stk);
+void	reverse_rotate_r(m_stack *stk);
 
 void	check_contents(t_list *stack);
 

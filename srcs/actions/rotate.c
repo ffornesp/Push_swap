@@ -1,33 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/19 13:03:17 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/19 15:07:23 by ffornes-         ###   ########.fr       */
+/*   Created: 2023/04/19 14:55:23 by ffornes-          #+#    #+#             */
+/*   Updated: 2023/04/19 15:58:11 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_a(m_stack *stk)
+void	rotate_a(m_stack *stk)
 {
-	t_list	*lst;
+	t_list	*aux;
+	t_list	*f;
 
-	lst = stk->stack_b;
-	stk->stack_b = stk->stack_b->next;
-	lst->next = NULL;
-	ft_lstadd_front(&stk->stack_a, lst);
+	aux = stk->stack_a;
+	stk->stack_a = stk->stack_a->next;
+	f = ft_lstlast(stk->stack_a);
+	aux->next = NULL;
+	f->next = aux;
 }
 
-void	push_b(m_stack *stk)
+void	rotate_b(m_stack *stk)
 {
-	t_list	*lst;
+	t_list	*aux;
+	t_list	*f;
 
-	lst = stk->stack_a;
-	stk->stack_a = stk->stack_a->next;
-	lst->next = NULL;
-	ft_lstadd_front(&stk->stack_b, lst);
+	aux = stk->stack_b;
+	stk->stack_b = stk->stack_b->next;
+	f = ft_lstlast(stk->stack_b);
+	aux->next = NULL;
+	f->next = aux;
+}
+
+void	rotate_r(m_stack *stk)
+{
+	rotate_a(stk);
+	rotate_b(stk);
 }
