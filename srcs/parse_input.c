@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 09:53:23 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/19 13:17:16 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/19 13:28:47 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ void	check_contents(t_list *stack)
 	while (aux)
 	{
 		i = aux->content;
-		ft_printf("%d\n", *i);
+		ft_printf("      %d\n", *i);
 		aux = aux->next;
 	}
+	ft_printf(WHITE);
 }
 
 static char	*join_input(char **input)
@@ -94,6 +95,7 @@ t_list	*parse(char **str)
 	free(out);
 	if (check_duplicates(stack) < 1)
 		return (NULL);
+	ft_printf(YELLOW"  STACK O:\n"GREEN);
 	check_contents(stack);
 	return (stack);
 }
