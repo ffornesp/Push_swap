@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 09:53:23 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/19 12:27:25 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/19 12:59:25 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ static char	*join_input(char **input)
 static t_list	*convert_to_tlist(char **input)
 {
 	int		i;
-	int		n;
 	int		*k;
 	t_list	*stack;
 
@@ -62,12 +61,10 @@ static t_list	*convert_to_tlist(char **input)
 	stack = NULL;
 	while (input[i])
 	{
-		input[i] = check_zeros(input[i]);
 		k = malloc(sizeof(int *));
-		n = ft_atoi(input[i]);
-		*k = n;
-		if (n || input[i][0] == '0')
-		ft_lstadd_back(&stack, ft_lstnew(k));
+		*k = ft_atoi(input[i]);
+		if (*k || input[i][0] == '0')
+			ft_lstadd_back(&stack, ft_lstnew(k));
 		else
 		{
 			while (input[i])
@@ -93,8 +90,7 @@ t_list	*parse(char **str)
 	out = ft_split(input, ' ');
 	if (!out)
 		return (NULL);
-	if (out[1])
-		free(input);
+	free(input);
 	stack = convert_to_tlist(out);
 	free(out);
 	if (check_duplicates(stack) < 1)
