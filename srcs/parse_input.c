@@ -6,18 +6,18 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 09:53:23 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/19 09:40:44 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/19 10:27:39 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-static void	check_contents(t_list **stack)
+void	check_contents(t_list *stack)
 {
 	t_list	*aux;
 	int		*i;
 
-	aux = *stack;
+	aux = stack;
 	ft_printf(YELLOW"\tSTACK A:\n"WHITE);
 	while (aux)
 	{
@@ -97,6 +97,6 @@ t_list	*parse(char **str)
 	free(out);
 	if (check_duplicates(stack) < 1)
 		return (NULL);
-	check_contents(&stack);
+	check_contents(stack);
 	return (stack);
 }

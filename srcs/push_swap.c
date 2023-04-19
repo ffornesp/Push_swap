@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 09:33:07 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/18 16:48:04 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/19 10:30:49 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,20 @@
 
 void	push_swap(char	**str)
 {
+	m_stack	*stk;
 	t_list	*stack_a;
+	t_list	*stack_b;
 
+	stk = malloc(sizeof(m_stack));
 	stack_a = parse(str);
-	ft_lstclear(&stack_a, (void *)ft_delete);
+	stack_b = NULL;
+	stk->stack_a = stack_a;
+	stk->stack_b = stack_b;
+
+	swap_a(stk);
+	check_contents(stk->stack_a);
+	ft_lstclear(&stk->stack_a, (void *)ft_delete);
+	free(stk);
 	return ;
 }
 
