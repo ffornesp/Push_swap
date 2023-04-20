@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 17:46:10 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/19 18:07:58 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/20 09:31:54 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,23 @@ int	finish_check(m_stack *stk)
 	int		*n;
 	t_list	*lst;
 
-	lst = stk->stack_a;
-	max = lst->content;
-	min = lst->content;
-	while (lst->next)
+	if (stk->stack_b)
 	{
-		n = lst->next->content;
-		if (*n > *max && *n > *min)
+		lst = stk->stack_a;
+		max = lst->content;
+		min = lst->content;
+		while (lst->next)
 		{
-			max = lst->next->content;
-			lst = lst->next;
+			n = lst->next->content;
+			if (*n > *max && *n > *min)
+			{
+				max = lst->next->content;
+				lst = lst->next;
+			}
+			else
+				return (0);
 		}
-		else
-			return (0);
+		return (1);
 	}
-	return (1);
+	return (0);
 }
