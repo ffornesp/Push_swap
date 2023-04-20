@@ -6,21 +6,23 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 14:32:17 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/20 14:39:57 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/20 19:53:45 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_lstpos(t_list *lst, void *value)
+int	ft_lstpos(t_list *lst, int *value)
 {
-	int		i;
-	void	*tmp;
+	int	i;
+	int	*tmp;
 
-	i = 0;
+	i = 1;
 	tmp = lst->content;
-	while (tmp != value && lst->next)
+	while (lst->next)
 	{
+		if (*tmp == *value)
+			return (i);
 		lst = lst->next;
 		tmp = lst->content;
 		i++;

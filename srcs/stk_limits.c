@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 16:12:59 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/20 17:24:43 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/20 19:41:10 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,18 @@
 
 void	stk_limits(t_list *lst, int *max, int *min)
 {
-	int	*i;
+	t_list	*aux;
+	int		*i;
 
-	if (lst)
+	aux = lst;
+	while (aux)
 	{
-		i = lst->content;
+		i = aux->content;
 		if (*i > *max)
-			max = i;
+			*max = *i;
 		else if (*i < *min)
-			min = i;
+			*min = *i;
+		aux = aux->next;
 	}
 	return ;
 }

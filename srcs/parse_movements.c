@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:06:14 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/20 17:27:46 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/20 18:01:55 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	parse_move(m_stack *stk, char **moves)
 	int		i;
 
 	i = 0;
+	ft_printf("Reached parse_move\n");
 	while (moves[i])
 	{
 		if (*moves[i] == 's')

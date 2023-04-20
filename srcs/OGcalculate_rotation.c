@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 15:29:59 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/20 20:14:49 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/20 18:56:12 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,40 +95,39 @@ void	merge_rot_check(c_action *actions)
 	free(tmp);
 }
 
-c_action	*calc_rotation(t_list *lst, int *value, int stack, c_action *acts)
-{ 
-// Rn calculates it wrong. Doesnt have action 0 actions with input 1 2 3 4 5 8 6 7
-	char	*tmp;
-	int		i;
+c_action	*calculate_rotation(t_list *lst, int *value, int stack, int *moves)
+{
+	char		*tmp;
+	c_action	*actions;
+	int			*movements;
 
-	if (!acts)
-	{
-		acts = malloc(sizeof(c_action));
-		acts->moves = ft_strdup("");
-		acts->amount = malloc(sizeof(int));
-		*acts->amount = 0;
-		i = 0;
-	}
+	tmp = NULL;
+	if (moves)
+		movements = moves;
 	else
 	{
-		i = *acts->amount;
+		movements = malloc(sizeof(int));
+		*movements = 0;
 	}
-	if (ft_lstpos(lst, value) < ft_lstsize(lst) / 2)
+	actions = malloc(sizeof(c_action));
+	actions->amount = movements;
+	actions->moves = ft_strdup("");
+	if (ft_lstpos(lst, value) < ft_lstsize(lst))
 	{
-		i += ft_lstpos(lst, value);
+		*movements += ft_lstpos(lst, value);
+		ft_printf(RED"AYAYAYA %d\n"WHITE, ft_lstpos(lst, value));
 		tmp = "rb\n\0";
 		if (stack < 1)
 			tmp = "ra\n\0";
 	}
 	else
 	{
-		i += ft_lstsize(lst) - ft_lstpos(lst, value);
+		movements += ft_lstsize(lst) - ft_lstpos(lst, value);
 		tmp = "rrb\n\0";
 		if (stack < 1)
 			tmp = "rra\n\0";
 	}
-	*acts->amount = i;
-	add_to_moves(acts, i, tmp);
-	ft_printf(YELLOW"ACTIONS AMOUNT: "WHITE"%d\n"YELLOW"ACTIONS:"WHITE"\n%s", *acts->amount, acts->moves);
-	return (acts);
+	add_to_moves(actions, *actions->amount, tmp);
+	//free(tmp);
+	return (actions);
 }

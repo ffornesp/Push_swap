@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:06:14 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/20 20:12:37 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/20 18:52:59 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,32 +44,39 @@ static void	cost_check(c_action *cheapest, c_action *tmp)
 c_action	*calculate_moves(m_stack *stk, int *max_b, int *min_b)
 {
 	c_action	*cheapest;
-	c_action	*tmp;
+	c_action	*tmp_b;
+	c_action	*tmp_a;
 	t_list		*aux;
 	int			*i;
 
 	cheapest = NULL;
-	tmp = NULL;
 	aux = stk->stack_a;
 	while (aux->next)
 	{
 		i = aux->content;
 		if (*i > *max_b || *i < *min_b)
 		{
-			tmp = calc_rotation(stk->stack_b, max_b, 1, tmp);
-			//ft_printf("HELLO TMP AMOUNT IS: %d\n", tmp->amount);
-			tmp = calc_rotation(stk->stack_a, i, 0, tmp);
-			//merge_rot_check(tmp);
-			add_to_moves(tmp, 1, "pb\n");
+			tmp_b = calculate_rotation(stk->stack_b, max_b, 1, tmp_b->amount);
+		ft_printf("MOVES IN TEMP_B:\n%s", tmp_b->moves);
+			tmp_a = calculate_rotation(stk->stack_a, i, 0, tmp_b->amount);
+		//ft_printf("MOVES IN TEMP_A:\n%s", tmp_a->moves);
+			ft_printf(RED"TMP_A AMOUNT OF MOVES:\n%s", tmp_a->amount);
+			tmp_a->moves = ft_strjoin(tmp_b->moves, tmp_a->moves);
+		//ft_printf(YELLOW"MOVES TOTAL: \n%s"WHITE, tmp_a->moves);
+			*tmp_a->amount += *tmp_b->amount;
+		//ft_printf(RED"TMP AMOUNT OF MOVES:\n%s", tmp_a->amount);
+			//merge_rot_check(tmp_a);
+		//ft_printf(GREEN"MOVES AFTER MERGE:\n%s"WHITE, tmp_a->moves);
+			add_to_moves(tmp_a, 1, "pb\n");
 		}
 		else
 		{
 			// Rotate b until I can push lst between [> lst >]
 		}
-		cost_check(cheapest, tmp);
+		cost_check(cheapest, tmp_a);
 		aux = aux->next;
 	}
 	//min_max_change_check(stk->stack_b->content, max_b, min_b);
-	ft_printf(GREEN"Found cheapest move: %d moves\n"WHITE, *cheapest->amount);
+	ft_printf(GREEN"Found cheapest move\n"WHITE);
 	return (cheapest);
 }
