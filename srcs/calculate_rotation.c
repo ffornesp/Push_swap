@@ -6,15 +6,18 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 15:29:59 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/20 17:05:37 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/20 17:11:29 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// Adds whatever rotations are left that couldn't be merged in rr || rrr //
 static void	merge_rot_2(int times, char *str, c_actions actions, char *out)
 {
 	char	*aux;
+	int		n_actions;
+	int		i;
 
 	aux = out;
 	while (times)
@@ -25,8 +28,16 @@ static void	merge_rot_2(int times, char *str, c_actions actions, char *out)
 	}
 	free(actions->moves);
 	actions->moves = out;
+	i = 0;
+	while (actions->moves[i])
+	{
+		if (actions->moves[i++] == '\n')
+			n_actions++;
+	}
+	*actions->amount = n_actions;
 }
 
+// Merges ra && rb into rr || rra && rrb into rrr //
 static void	merge_rot(c_actions actions, int a_rot, int b_rot)
 {
 	int		merges;
