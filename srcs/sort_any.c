@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:01:28 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/20 13:35:58 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/20 16:14:58 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ static void	start_move(m_stack *stk, int *max_b, int *min_b)
 	actions->moves = ft_strdup("");
 	while (ft_lstsize(stk->stack_a) > 3)
 	{
-		actions = calculate_actions(stk, max_b, min_b);
+		actions = calculate_moves(stk, max_b, min_b);
 		parse_move(stk, actions);
+		stk_limits(stk->stack_b, max_b, min_b);
 	}
 	// Push_back(stk);
 }

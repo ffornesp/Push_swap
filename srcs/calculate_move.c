@@ -6,86 +6,64 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:06:14 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/20 13:34:54 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/20 16:33:02 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	free_calculation(c_action solution)
+static void	min_max_change_check(int *i, int *max, int *min)
 {
-	int		i;
-	char	**moves;
-
-	i = 0;
-	free(solution->actions);
-	free(solution);
-	return ;
+	if (*i > *max)
+		max = i;
+	else if (*i < *min)
+		min = i;
 }
 
-static void	save_action(char **actions, char *action, int amount)
+static void	cost_check(c_action *cheapest, c_action *tmp)
 {
-	if (!actions)
-		actions = malloc(sizeof(char **));
-}
-
-c_action	calculate_rotate(m_stack *stk, int *value)
-{
-	c_action	*out;
-	int			pos;
-	int			*tmp;
-	char		*action;
-
-	pos = 0;
-	tmp = stk->stack_b->content;
-	while (*value != *max_b && stk->stack_b->next) // Calculate pos of 
+	if (!cheapest)
+		cheapest = tmp;
+	else if (cheapest->amount > tmp->amount)
 	{
-		stk->stack_b = stk->stack_b->next;
-		value = stk->stack_b->content;
-		pos++;
-	} // Then check if it's cheaper to rotate or reverse_rotate
-	out = malloc(sizeof(c_action));
-	action = malloc(sizeof(char) * 5);
-	if (pos < ft_lstsize(stk->stack_b)) // rotate_b
-	{
-		action = "rb\n\0";
+		free(cheapest->amount);
+		free(cheapest->moves);
+		free(cheapest);
+		cheapest = tmp;
 	}
-	else // reverse_rotate_b
+	else
 	{
-		action = "rrb\n\0";
+		free(tmp->amount);
+		free(tmp->moves);
+		free(tmp);
 	}
 }
 
-c_action	*calculate_move(m_stack *stk, int *max_b, int *min_b)
+c_action	*calculate_moves(m_stack *stk, int *max_b, int *min_b)
 {
 	c_action	*cheapest;
 	c_action	*tmp;
-	t_list		*lst;
-	
-	cheapest = malloc(sizeof(c_action));
-	lst = stk->stack_a;
-	while (lst->next)
-	{
-		i = lst->content;
-		if (*i > *max_b || *i < *min_b) // I have to push_b
-		{
-			tmp = calculate_rotate(stk, max_b); // Add rotations to actions
+	int			*i;
 
-			if (*i > *max_b)
-				max_b = i;
-			else
-				min_b = i;
+	while (stk->stack_a->next)
+	{
+		i = stk->stack_a->content;
+		if (*i > *max_b || *i < *min_b)
+		{
+			tmp = calculate_rotation(stk, *i, a);
+			tmp = calculate_rotation(stk, max_b, b);
+			merge_rot_check(tmp);
+			// Check if str starts the same "ra/rb || rra/rrb"
+			// If it's the case, then rr || rrr is possible, else..
+			add_to_moves(tmp, 1, "pb\n\0");
 		}
 		else
 		{
 			// Rotate b until I can push lst between [> lst >]
 		}
-		if (cheapest->amount > tmp->amount)
-		{
-			free(cheapest);
-			cheapest = tmp;
-		}
-		lst = lst->next;
+		cost_check(cheapest, tmp);
+		stk->stack_a = stk->stack_a->next;
 	}
+	min_max_change_check(max_b, min_b);
 	return (cheapest);
 }

@@ -6,7 +6,7 @@
 #    By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/24 19:51:17 by ffornes-          #+#    #+#              #
-#    Updated: 2023/04/19 11:15:33 by ffornes-         ###   ########.fr        #
+#    Updated: 2023/04/20 14:37:21 by ffornes-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ SRC_FILES =	 ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 			 ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 			 ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c \
 			 ft_lstmap.c \
-			 ft_delete.c
+			 ft_delete.c ft_lstpos.c
 SRCS_LIBFT = $(addprefix $(SRCS_LIBFT_DIR), $(SRC_FILES))
 
 SRCS_PRINTF_DIR = ft_printf/srcs/
