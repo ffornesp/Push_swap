@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 09:33:07 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/19 17:37:57 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/20 10:47:31 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	push_swap(char	**str)
 	size = ft_lstsize(stk->stack_a);
 
 	if (size <= 3)
-		sort_little(stk);
+		sort_3(stk);
 	// CHECKS
 	ft_printf(YELLOW"  STACK A: \n"WHITE);
 	check_contents(stk->stack_a);
