@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:01:28 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/20 16:14:58 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/20 17:24:40 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,14 @@ void	init_sort(m_stack *stk)
 	int	*tmp;
 
 	push_b(stk);
+	ft_printf("pb\n");
 	max_b = stk->stack_b->content;
 	min_b = max_b;
 	if (ft_lstsize(stk->stack_a) > 3)
 	{
 		push_b(stk);
-		tmp = stk->stack_b->content;
-		if (*tmp > *max_b)
-			max_b = tmp;
-		else if (*tmp < *min_b)
-			min_b = tmp;
+		ft_printf("pb\n");
+		stk_limits(stk->stack_b, max_b, min_b)
 		start_move(stk, max_b, min_b);
 	}
 	else

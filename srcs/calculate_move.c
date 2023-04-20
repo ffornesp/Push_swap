@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:06:14 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/20 17:07:20 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/20 17:15:46 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,6 @@ c_action	*calculate_moves(m_stack *stk, int *max_b, int *min_b)
 			tmp = calculate_rotation(stk, *i, a);
 			tmp = calculate_rotation(stk, max_b, b);
 			merge_rot_check(tmp);
-			// Check if str starts the same "ra/rb || rra/rrb"
-			// If it's the case, then rr || rrr is possible, else..
 			add_to_moves(tmp, 1, "pb\n");
 		}
 		else
