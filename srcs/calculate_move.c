@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:06:14 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/20 17:15:46 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/20 17:39:29 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,14 @@ c_action	*calculate_moves(m_stack *stk, int *max_b, int *min_b)
 	c_action	*tmp;
 	int			*i;
 
+	cheapest = NULL;
 	while (stk->stack_a->next)
 	{
 		i = stk->stack_a->content;
 		if (*i > *max_b || *i < *min_b)
 		{
-			tmp = calculate_rotation(stk, *i, a);
-			tmp = calculate_rotation(stk, max_b, b);
+			tmp = calculate_rotation(stk->stack_b, max_b, 1);
+			tmp = calculate_rotation(stk->stack_a, i, 0);
 			merge_rot_check(tmp);
 			add_to_moves(tmp, 1, "pb\n");
 		}
@@ -62,6 +63,6 @@ c_action	*calculate_moves(m_stack *stk, int *max_b, int *min_b)
 		cost_check(cheapest, tmp);
 		stk->stack_a = stk->stack_a->next;
 	}
-	min_max_change_check(max_b, min_b);
+	min_max_change_check(stk->stack_b->content, max_b, min_b);
 	return (cheapest);
 }

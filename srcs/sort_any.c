@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:01:28 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/20 17:27:40 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/20 17:35:25 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	start_move(m_stack *stk, int *max_b, int *min_b)
 {
 	c_action	*actions;
-	char		*tmp;
+	char		**tmp;
 
 	actions = malloc(sizeof(c_action));
 	actions->amount = malloc(sizeof(int));
@@ -48,7 +48,7 @@ void	init_sort(m_stack *stk)
 	{
 		push_b(stk);
 		ft_printf("pb\n");
-		stk_limits(stk->stack_b, max_b, min_b)
+		stk_limits(stk->stack_b, max_b, min_b);
 		start_move(stk, max_b, min_b);
 	}
 	else
