@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 16:24:47 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/20 10:48:35 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/20 13:35:34 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ typedef struct	lst_stack
 
 typedef struct	s_action
 {
-	int		amount;
-	char	**actions;
+	int		*amount;
+	char	*moves;
 }	c_action;
 
 void	push_swap(char **str);

@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 09:53:23 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/19 13:28:47 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/20 13:36:35 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static t_list	*convert_to_tlist(char **input)
 	stack = NULL;
 	while (input[i])
 	{
-		k = malloc(sizeof(int *));
+		k = malloc(sizeof(int));
 		*k = ft_atoi(input[i]);
 		if (*k || input[i][0] == '0')
 			ft_lstadd_back(&stack, ft_lstnew(k));

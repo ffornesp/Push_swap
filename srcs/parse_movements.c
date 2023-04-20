@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:06:14 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/20 10:47:55 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/20 12:24:25 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,13 @@ static void	parse_r(m_stack *stk, char *movement)
 		reverse_rotate_r(stk);
 }
 
-void	parse_move(m_stack *stk, char **moves)
+void	parse_move(m_stack *stk, c_action solution)
 {
-	int	i;
+	char	**moves;
+	int		i;
 
 	i = 0;
+	moves = solution->actions;
 	while (moves[i])
 	{
 		if (*moves[i] == 's')
@@ -76,4 +78,5 @@ void	parse_move(m_stack *stk, char **moves)
 		i++;
 	}
 	free(moves);
+	return ;
 }
