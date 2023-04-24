@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 14:32:17 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/24 12:13:48 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/24 12:42:17 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_lstpos(t_list *lst, int *value)
 	int	i;
 	int	*tmp;
 
-	i = 1;
+	i = 0;
 	tmp = lst->content;
 	while (lst)
 	{
