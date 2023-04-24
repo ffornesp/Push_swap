@@ -6,70 +6,53 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:06:14 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/20 20:12:37 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/24 12:37:21 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*
-static void	min_max_change_check(int *i, int *max, int *min)
+// I don't allocate tmp_action because it's allocated in calculate rotation
+// same goes for cheapest_action, since it will point to the memory address
+// of the cheapest seen tmp_action
+t_list	*calculate_moves(m_stack *stk, int *max_b, int *min_b)
 {
-	if (*i > *max)
-		max = i;
-	else if (*i < *min)
-		min = i;
-}
-*/
+	t_list	*cheapest_action;
+	t_list	*tmp_action;
+	t_list	*aux;
+	int		*i;
 
-static void	cost_check(c_action *cheapest, c_action *tmp)
-{
-	if (!cheapest)
-		cheapest = tmp;
-	else if (cheapest->amount > tmp->amount)
-	{
-		free(cheapest->amount);
-		free(cheapest->moves);
-		free(cheapest);
-		cheapest = tmp;
-	}
-	else
-	{
-		free(tmp->amount);
-		free(tmp->moves);
-		free(tmp);
-	}
-}
-
-c_action	*calculate_moves(m_stack *stk, int *max_b, int *min_b)
-{
-	c_action	*cheapest;
-	c_action	*tmp;
-	t_list		*aux;
-	int			*i;
-
-	cheapest = NULL;
-	tmp = NULL;
 	aux = stk->stack_a;
-	while (aux->next)
+	cheapest_action = NULL;
+	while (aux)
 	{
+		tmp_action = malloc(sizeof(t_list));
+		tmp_action->next = NULL;
 		i = aux->content;
+		ft_printf(YELLOW"Checking %d\n"WHITE, *i);
 		if (*i > *max_b || *i < *min_b)
 		{
-			tmp = calc_rotation(stk->stack_b, max_b, 1, tmp);
-			//ft_printf("HELLO TMP AMOUNT IS: %d\n", tmp->amount);
-			tmp = calc_rotation(stk->stack_a, i, 0, tmp);
+			tmp_action = calc_rotation(stk->stack_b, max_b, 1, tmp_action);
+			ft_printf("Rotation in stack_b calculated\n");
+			tmp_action = calc_rotation(stk->stack_a, i, 0, tmp_action);
+			ft_printf("Rotation has been calculated\n");
 			//merge_rot_check(tmp);
-			add_to_moves(tmp, 1, "pb\n");
+			//add_to_moves(tmp, 1, "pb\n");
 		}
 		else
 		{
 			// Rotate b until I can push lst between [> lst >]
 		}
-		cost_check(cheapest, tmp);
+		if (!cheapest_action)
+			cheapest_action = tmp_action;
+		if (ft_lstsize(cheapest_action) > ft_lstsize(tmp_action))
+		{
+			ft_lstclear(&cheapest_action, (void *)ft_delete);
+			cheapest_action = tmp_action;
+		}
 		aux = aux->next;
 	}
 	//min_max_change_check(stk->stack_b->content, max_b, min_b);
-	ft_printf(GREEN"Found cheapest move: %d moves\n"WHITE, *cheapest->amount);
-	return (cheapest);
+	ft_printf(GREEN"Found cheapest move: %d moves\n"WHITE, ft_lstsize(cheapest_action));
+	return (cheapest_action);
 }

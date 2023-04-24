@@ -6,26 +6,11 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 09:53:23 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/20 13:36:35 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/24 09:51:39 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	check_contents(t_list *stack)
-{
-	t_list	*aux;
-	int		*i;
-
-	aux = stack;
-	while (aux)
-	{
-		i = aux->content;
-		ft_printf("      %d\n", *i);
-		aux = aux->next;
-	}
-	ft_printf(WHITE);
-}
 
 static char	*join_input(char **input)
 {
@@ -96,6 +81,6 @@ t_list	*parse(char **str)
 	if (check_duplicates(stack) < 1)
 		return (NULL);
 	ft_printf(YELLOW"  STACK O:\n"GREEN);
-	check_contents(stack);
+	check_list(stack);
 	return (stack);
 }

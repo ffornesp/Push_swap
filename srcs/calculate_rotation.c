@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 15:29:59 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/20 20:14:49 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/24 12:37:18 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,40 +95,52 @@ void	merge_rot_check(c_action *actions)
 	free(tmp);
 }
 
-c_action	*calc_rotation(t_list *lst, int *value, int stack, c_action *acts)
-{ 
-// Rn calculates it wrong. Doesnt have action 0 actions with input 1 2 3 4 5 8 6 7
-	char	*tmp;
-	int		i;
+static void	fill_list(t_list *lst, int amount, int value)
+{
+	t_list	*aux;
+	t_list	*tmp;
+	int		*n;
 
-	if (!acts)
+	aux = lst;
+	while (aux->next)
+		aux = aux->next;
+	while (amount)
 	{
-		acts = malloc(sizeof(c_action));
-		acts->moves = ft_strdup("");
-		acts->amount = malloc(sizeof(int));
-		*acts->amount = 0;
-		i = 0;
+		tmp = malloc(sizeof(t_list));
+		aux->next = tmp;
+		n = malloc(sizeof(int));
+		*n = value;
+		aux->next->content = n;
+		aux = aux->next;
+		amount--;
 	}
-	else
+}
+
+t_list	*calc_rotation(t_list *lst, int *value, int stack, t_list *action)
+{ 
+	int	n;
+	int	i;
+
+	i = 0;
+	if (ft_lstpos(lst, value) > 1)
 	{
-		i = *acts->amount;
+		if (ft_lstpos(lst, value) < ft_lstsize(lst) / 2)
+		{
+			i = ft_lstpos(lst, value) - 1;
+			n = 'G';
+			if (stack < 1)
+				n = 'C';
+		}
+		else
+		{
+			i = ft_lstsize(lst) - ft_lstpos(lst, value);
+			n = 'H';
+			if (stack < 1)
+				n = 'D';
+		}
+		if (i > 0)
+			fill_list(action, i, n);
+		ft_printf("Will rotate %c %d times\n", n, ft_lstsize(action));
 	}
-	if (ft_lstpos(lst, value) < ft_lstsize(lst) / 2)
-	{
-		i += ft_lstpos(lst, value);
-		tmp = "rb\n\0";
-		if (stack < 1)
-			tmp = "ra\n\0";
-	}
-	else
-	{
-		i += ft_lstsize(lst) - ft_lstpos(lst, value);
-		tmp = "rrb\n\0";
-		if (stack < 1)
-			tmp = "rra\n\0";
-	}
-	*acts->amount = i;
-	add_to_moves(acts, i, tmp);
-	ft_printf(YELLOW"ACTIONS AMOUNT: "WHITE"%d\n"YELLOW"ACTIONS:"WHITE"\n%s", *acts->amount, acts->moves);
-	return (acts);
+	return (action);
 }
