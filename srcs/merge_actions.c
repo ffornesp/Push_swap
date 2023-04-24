@@ -6,16 +6,31 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:54:46 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/24 17:14:26 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/24 17:30:34 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+static void	remove_action(t_list **lst)
+{
+	t_list	*tmp;
+	t_list	*aux;
+	int		*n;
+
+	aux = *lst;
+	n = aux->next->content;
+	if (n && (*n == 'C' || *n == 'D'))
+	{
+		tmp = aux->next;
+		aux = tmp->next;
+		ft_lstdelone(tmp, (void *)ft_delete);
+	}
+}
+
 static void	merge_rotation(t_list **lst, int amount)
 {
 	t_list	*aux;
-	t_list	*tmp;
 	int		i;
 	int		*n;
 
@@ -30,14 +45,8 @@ static void	merge_rotation(t_list **lst, int amount)
 			*n = 'J';
 		if (i)
 		{
-			n = aux->next->content;
-			if (n && (*n == 'C' || *n == 'D'))
-			{
-				tmp = aux->next;
-				aux = tmp->next;
-				ft_lstdelone(tmp, (void *) ft_delete);
-				i--;
-			}
+			remove_action(&aux);
+			i--;
 		}
 		else
 			aux = aux->next;
