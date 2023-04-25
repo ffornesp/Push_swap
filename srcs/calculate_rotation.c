@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 15:29:59 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/24 16:32:11 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/25 10:18:37 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	fill_list(t_list **lst, int amount, int *value)
 	}
 }
 
-void	*calc_rotation(t_list *lst, int *value, int stack, t_list **action)
+void	*calc_rot(t_list *lst, int *value, int stack, t_list **action)
 {
 	int	n;
 	int	i;
@@ -56,4 +56,14 @@ void	*calc_rotation(t_list *lst, int *value, int stack, t_list **action)
 		fill_list(action, i, &n);
 	}
 	return (*action);
+}
+
+void	add_push(t_list **action, int stack)
+{
+	int	n;
+
+	n = 'B';
+	if (stack < 1)
+		n = 'F';
+	fill_list(action, 1, &n); 
 }
