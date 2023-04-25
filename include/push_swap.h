@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 16:24:47 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/25 12:09:18 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/25 13:13:42 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,19 +50,19 @@ int		check_duplicates(t_list *stack);
 char	*check_zeros(char *input);
 int		finish_check(m_stack *stk);
 
-void	swap_a(m_stack *stk);
-void	swap_b(m_stack *stk);
+void	swap_a(m_stack *stk, int check);
+void	swap_b(m_stack *stk, int check);
 void	swap_s(m_stack *stk);
 
 void	push_a(m_stack *stk);
 void	push_b(m_stack *stk);
 
-void	rotate_a(m_stack *stk);
-void	rotate_b(m_stack *stk);
+void	rotate_a(m_stack *stk, int check);
+void	rotate_b(m_stack *stk, int check);
 void	rotate_r(m_stack *stk);
 
-void	reverse_rotate_a(m_stack *stk);
-void	reverse_rotate_b(m_stack *stk);
+void	reverse_rotate_a(m_stack *stk, int check);
+void	reverse_rotate_b(m_stack *stk, int check);
 void	reverse_rotate_r(m_stack *stk);
 
 void	sort_3(m_stack *stk);

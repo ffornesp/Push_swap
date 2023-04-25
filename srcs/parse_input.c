@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 09:53:23 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/24 09:51:39 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/25 13:16:18 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,16 +71,14 @@ t_list	*parse(char **str)
 
 	input = join_input(str);
 	if (check_digits(input) < 1)
-		return (NULL);
+		exit (1);
 	out = ft_split(input, ' ');
 	if (!out)
-		return (NULL);
+		exit (1);
 	free(input);
 	stack = convert_to_tlist(out);
 	free(out);
 	if (check_duplicates(stack) < 1)
-		return (NULL);
-	ft_printf(YELLOW"  STACK O:\n"GREEN);
-	check_list(stack);
+		exit (1);
 	return (stack);
 }

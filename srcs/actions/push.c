@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 13:03:17 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/19 15:07:23 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/25 13:08:11 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	push_a(m_stack *stk)
 	stk->stack_b = stk->stack_b->next;
 	lst->next = NULL;
 	ft_lstadd_front(&stk->stack_a, lst);
+	ft_printf("pa\n");
 }
 
 void	push_b(m_stack *stk)
@@ -30,4 +31,5 @@ void	push_b(m_stack *stk)
 	stk->stack_a = stk->stack_a->next;
 	lst->next = NULL;
 	ft_lstadd_front(&stk->stack_b, lst);
+	ft_printf("pb\n");
 }

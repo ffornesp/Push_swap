@@ -6,13 +6,13 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 15:32:51 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/19 15:57:03 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/25 13:11:04 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	reverse_rotate_a(m_stack *stk)
+void	reverse_rotate_a(m_stack *stk, int check)
 {
 	t_list	*lst;
 	t_list	*aux;
@@ -29,9 +29,11 @@ void	reverse_rotate_a(m_stack *stk)
 	aux->next = NULL;
 	lst->next = stk->stack_a;
 	stk->stack_a = lst;
+	if (check < 1)
+		ft_printf("rra\n");
 }
 
-void	reverse_rotate_b(m_stack *stk)
+void	reverse_rotate_b(m_stack *stk, int check)
 {
 	t_list	*lst;
 	t_list	*aux;
@@ -48,10 +50,13 @@ void	reverse_rotate_b(m_stack *stk)
 	aux->next = NULL;
 	lst->next = stk->stack_b;
 	stk->stack_b = lst;
+	if (check < 1)
+		ft_printf("rrb\n");
 }
 
 void	reverse_rotate_r(m_stack *stk)
 {
-	reverse_rotate_a(stk);
-	reverse_rotate_b(stk);
+	reverse_rotate_a(stk, 1);
+	reverse_rotate_b(stk, 1);
+	ft_printf("rrr\n");
 }
