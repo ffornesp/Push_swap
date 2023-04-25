@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:54:46 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/24 17:30:34 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/25 10:45:04 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	remove_action(t_list **lst)
 	if (n && (*n == 'C' || *n == 'D'))
 	{
 		tmp = aux->next;
-		aux = tmp->next;
+		aux->next = aux->next->next;
 		ft_lstdelone(tmp, (void *)ft_delete);
 	}
 }
