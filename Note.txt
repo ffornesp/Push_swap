@@ -42,5 +42,6 @@ IN ORDER TO COMPILE WITH A .a LIBRARY:
 
 ----------------------------------------------------------------------------------
 
-"+0" explota
+"+0" || "-0" explota
+2 args explota
 "MAX_INT" explota
