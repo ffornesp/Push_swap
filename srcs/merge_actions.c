@@ -6,77 +6,123 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:54:46 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/25 11:42:37 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/25 18:19:10 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	remove_action(t_list **lst)
+static void	add_actions(t_list **lst, int action, int times)
 {
-	t_list	*tmp;
 	t_list	*aux;
-	int		*n;
+	int		*tmp;
 
 	aux = *lst;
-	n = aux->next->content;
-	if (n && (*n == 'C' || *n == 'D'))
+	while (times)
 	{
-		tmp = aux->next;
-		aux->next = aux->next->next;
-		ft_lstdelone(tmp, (void *)ft_delete);
+		tmp = malloc(sizeof(int));
+		*tmp = action;
+		if (!aux->content)
+			aux->content = tmp;
+		else
+			ft_lstadd_back(lst, ft_lstnew(tmp));
+		times--;
 	}
 }
 
-static void	merge_rotation(t_list **lst, int amount)
+static t_list	*merge_actions(m_actions **acts)
 {
-	t_list	*aux;
-	int		i;
-	int		*n;
+	t_list		*lst;
+	m_actions	*actions;
+
+	actions = *acts;
+	lst = ft_lstnew(NULL);
+	if (*actions->c > 0)
+		add_actions(&lst, 'C', *actions->c);
+	if (*actions->g > 0)
+		add_actions(&lst, 'G', *actions->g);
+	if (*actions->d > 0)
+		add_actions(&lst, 'D', *actions->d);
+	if (*actions->h > 0)
+		add_actions(&lst, 'H', *actions->h);
+	if (*actions->j > 0)
+		add_actions(&lst, 'J', *actions->j);	
+	if (*actions->k > 0)
+		add_actions(&lst, 'K', *actions->k);
+	return (lst);
+}
+
+static void	check_merge_2(t_list **lst, m_actions **acts)
+{
+	t_list		*aux;
+	m_actions	*actions;
 
 	aux = *lst;
-	i = amount;
-	while (aux)
+	actions = *acts;
+	while (*actions->c > 0 && *actions->g > 0)
 	{
-		n = aux->content;
-		if (n && *n == 'H' && amount--)
-			*n = 'K';
-		else if (n && *n == 'G' && amount--)
-			*n = 'J';
-		if (i)
-		{
-			remove_action(&aux);
-			i--;
-		}
-		else
-			aux = aux->next;
+		*actions->j += 1;
+		*actions->c -= 1;
+		*actions->g -= 1;
 	}
+	while (*actions->d > 0 && *actions->h > 0)
+	{
+		*actions->k += 1;
+		*actions->d -= 1;
+		*actions->h -= 1;
+	}
+	if (*actions->g > 0 || *actions->k > 0)
+	{
+		//ft_printf("Merge Actions\n");
+		*lst = merge_actions(acts);
+		ft_lstclear(&aux, (void *)ft_delete);
+	}
+	//ft_printf("Don't merge\n");
+}
+
+static void	initialize_actions(m_actions **actions)
+{
+	m_actions	*tmp;
+
+	tmp = *actions;
+	tmp->c = malloc(sizeof(int));
+	*tmp->c = 0;
+	tmp->g = malloc(sizeof(int));
+	*tmp->g = 0;
+	tmp->d = malloc(sizeof(int));
+	*tmp->d = 0;
+	tmp->h = malloc(sizeof(int));
+	*tmp->h = 0;
+	tmp->j = malloc(sizeof(int));
+	*tmp->j = 0;
+	tmp->k = malloc(sizeof(int));
+	*tmp->k = 0;
 }
 
 void	check_merge_rotation(t_list **lst)
 {
-	t_list	*aux;
-	int		*c;
-	int		*f;
-	int		i;
-	int		j;
+	int			*tmp;
+	t_list		*aux;
+	m_actions	*actions;
 
 	aux = *lst;
-	i = 0;
-	j = 0;
-	f = aux->content;
+	actions = malloc(sizeof(m_actions));
+	initialize_actions(&actions);
 	while (aux)
 	{
-		c = aux->content;
-		if (c && (*c == 'G' || *c == 'H'))
-			i++;
-		if (c && f && (((*c == 'C') && (*f == 'G')) 
-					|| ((*c == 'D') && (*f == 'H'))))
-			j++;
+		tmp = aux->content;
+		if (tmp && actions)
+		{
+			if (*tmp == 'C')
+				*actions->c += 1;
+			else if (*tmp == 'G')
+				*actions->g += 1;
+			else if (*tmp == 'D')
+				*actions->d += 1;
+			else if (*tmp == 'H')
+				*actions->h += 1;
+		}
 		aux = aux->next;
 	}
-	if (j < i)
-		i = j;
-	if (i > 1)
-		merge_rotation(lst, i);
+	check_merge_2(lst, &actions);
 }

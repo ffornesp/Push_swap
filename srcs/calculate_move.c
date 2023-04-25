@@ -6,12 +6,14 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:06:14 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/25 12:57:05 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/25 17:46:53 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// There's error in phase 0 where it calculates it so fucking wrong it's
+// laughable
 static int 	*find_p(int n, t_list *lst, int phase)
 {
 	t_list	*aux;
@@ -41,7 +43,8 @@ static int 	*find_p(int n, t_list *lst, int phase)
 
 static t_list	*get_cheapest(t_list *tmp_act, t_list *cheapest_act, int stack)
 {
-	check_merge_rotation(&tmp_act);
+	if (ft_lstsize(tmp_act) > 1)
+		check_merge_rotation(&tmp_act);
 	add_push(&tmp_act, stack);
 	if (!cheapest_act)
 		cheapest_act = tmp_act;

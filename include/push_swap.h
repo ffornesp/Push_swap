@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 16:24:47 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/25 13:13:42 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/25 18:07:10 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,15 @@ typedef struct	lst_stack
 	t_list	*stack_b;
 }	m_stack;
 
-typedef struct	s_action
+typedef struct	lst_actions
 {
-	int		*amount;
-	char	*moves;
-}	c_action;
+	int	*c;
+	int	*g;
+	int	*d;
+	int	*h;
+	int	*j;
+	int *k;
+}	m_actions;
 
 void	push_swap(char **str);
 
@@ -77,7 +81,6 @@ void	add_push(t_list **action, int stack);
 
 void	parse_move(m_stack *stk, t_list *actions);
 
-void	add_to_moves(c_action *actions, int times, char *act);
 void	stk_limits(t_list *lst, int *max, int *min);
 
 void	check_list(t_list *stack);
