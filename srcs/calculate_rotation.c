@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 15:29:59 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/25 10:18:37 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/25 11:03:26 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	fill_list(t_list **lst, int amount, int *value)
 			aux->content = n;
 		else
 			ft_lstadd_back(lst, ft_lstnew(n));
-		ft_printf("Added %c\n", (char) *n);
+		//ft_printf("Added %c\n", (char) *n);
 		amount--;
 	}
 }

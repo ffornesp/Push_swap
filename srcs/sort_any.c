@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:01:28 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/24 12:00:08 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/25 11:40:52 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,18 @@
 static void	start_move(m_stack *stk, int *max_b, int *min_b)
 {
 	t_list	*actions;
+	int		*n;
 
 	while (ft_lstsize(stk->stack_a) > 3)
 	{
-		ft_printf("Calculating move...\n");
 		actions = calculate_moves(stk, max_b, min_b);
-		ft_printf("Calculated move\n");
-		break ;
-		//tmp = ft_split(actions->moves, '\n');
-		//parse_move(stk, tmp);
-		//stk_limits(stk->stack_b, max_b, min_b);
+		parse_move(stk, actions);
+		check_stack(stk);
+		n = stk->stack_b->content;
+		stk_limits(stk->stack_b, max_b, min_b);
+		ft_lstclear(&actions, (void *) ft_delete);
 	}
-	//free(actions);
+	sort_3(stk);
 	// Push_back(stk);
 }
 
@@ -37,16 +37,13 @@ void	init_sort(m_stack *stk)
 	int	*tmp;
 
 	push_b(stk);
-	ft_printf("pb\n");
 	tmp = stk->stack_b->content;
 	max_b = *tmp;
 	min_b = *tmp;
 	if (ft_lstsize(stk->stack_a) > 3)
 	{
 		push_b(stk);
-		ft_printf("pb\n");
 		stk_limits(stk->stack_b, &max_b, &min_b);
-		
 		check_stack(stk);	
 		start_move(stk, &max_b, &min_b);
 	}

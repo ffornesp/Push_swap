@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:54:46 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/25 10:45:04 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/25 11:42:37 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,15 @@ void	check_merge_rotation(t_list **lst)
 	while (aux)
 	{
 		c = aux->content;
-		if ((*c == 'G' || *c == 'H'))
+		if (c && (*c == 'G' || *c == 'H'))
 			i++;
-		if (((*c == 'C') && (*f == 'G')) || ((*c == 'D') && (*f == 'H')))
+		if (c && f && (((*c == 'C') && (*f == 'G')) 
+					|| ((*c == 'D') && (*f == 'H'))))
 			j++;
 		aux = aux->next;
 	}
 	if (j < i)
 		i = j;
-	merge_rotation(lst, i);
+	if (i > 1)
+		merge_rotation(lst, i);
 }
