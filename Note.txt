@@ -1,4 +1,4 @@
-	Push_swap has a stack that is passed through argc-argv, it should be a string
+Push_swap has a stack that is passed through argc-argv, it should be a string
 containing multiple integers. It's objective is to sort all numbers from lower
 to higher in the MINIMUM number of movements. 
 
@@ -41,3 +41,6 @@ IN ORDER TO COMPILE WITH A .a LIBRARY:
 	Enjoy
 
 ----------------------------------------------------------------------------------
+
+"+0" explota
+"MAX_INT" explota

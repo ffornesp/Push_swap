@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 16:24:47 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/25 11:23:16 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/25 12:09:18 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ void	reverse_rotate_r(m_stack *stk);
 void	sort_3(m_stack *stk);
 
 void	init_sort(m_stack *stk);
-t_list	*calculate_moves(m_stack *stk, int *max_b, int *min_b);
-
+t_list	*calculate_moves(m_stack *stk, int *max, int *min);
+t_list	*calculate_push_back(m_stack *stk, int *max, int *min);
 void	*calc_rot(t_list *lst, int *value, int stack, t_list **action);
 void	check_merge_rotation(t_list **lst);
 
