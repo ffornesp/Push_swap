@@ -46,5 +46,4 @@ if no parameters are specified, return(?)
 
 Must return 'error' on the standard error.
 
-"+0" || "-0" explota
 "MAX_INT" explota
