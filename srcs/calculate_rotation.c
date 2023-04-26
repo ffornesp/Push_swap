@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 15:29:59 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/25 16:26:21 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/26 11:22:34 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,5 @@ void	add_push(t_list **action, int stack)
 	n = 'B';
 	if (stack < 1)
 		n = 'F';
-	fill_list(action, 1, &n); 
+	fill_list(action, 1, &n);
 }

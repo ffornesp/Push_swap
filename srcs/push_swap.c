@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 09:33:07 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/26 10:08:32 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/26 11:36:32 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	push_swap(char	**str)
 {
 	int		size;
-	m_stack	*stk;
+	t_stack	*stk;
 
-	stk = malloc(sizeof(m_stack));
+	stk = malloc(sizeof(t_stack));
 	stk->stack_a = parse(str);
 	stk->stack_b = NULL;
 	size = ft_lstsize(stk->stack_a);
@@ -35,7 +35,5 @@ int	main(int argc, char *argv[])
 {
 	if (argc > 1)
 		push_swap(argv);
-	else
-		ft_printf(YELLOW"WARNING: "WHITE"An input is required to run the program\n");
 	return (0);
 }

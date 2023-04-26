@@ -6,13 +6,13 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:06:14 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/25 13:10:59 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/26 11:32:28 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	parse_move(m_stack *stk, t_list *actions)
+void	parse_move(t_stack *stk, t_list *actions)
 {
 	t_list	*aux;
 	int		*act;

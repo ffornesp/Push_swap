@@ -6,13 +6,13 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 13:03:17 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/25 13:08:11 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/26 11:34:12 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_a(m_stack *stk)
+void	push_a(t_stack *stk)
 {
 	t_list	*lst;
 
@@ -23,7 +23,7 @@ void	push_a(m_stack *stk)
 	ft_printf("pa\n");
 }
 
-void	push_b(m_stack *stk)
+void	push_b(t_stack *stk)
 {
 	t_list	*lst;
 

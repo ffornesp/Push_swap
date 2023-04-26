@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_check.c                                       :+:      :+:    :+:   */
+/*   initialize_actions.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/19 17:46:10 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/26 11:31:40 by ffornes-         ###   ########.fr       */
+/*   Created: 2023/04/26 11:00:08 by ffornes-          #+#    #+#             */
+/*   Updated: 2023/04/26 11:30:19 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	finish_check(t_stack *stk)
+void	actions_initialize(t_actions **actions)
 {
-	int		*max;
-	int		*min;
-	int		*n;
-	t_list	*lst;
+	t_actions	*tmp;
 
-	lst = stk->stack_a;
-	max = lst->content;
-	min = lst->content;
-	while (lst->next)
-	{
-		n = lst->next->content;
-		if (*n > *max && *n > *min)
-		{
-			max = lst->next->content;
-			lst = lst->next;
-		}
-		else
-			return (0);
-	}
-	return (1);
+	tmp = *actions;
+	tmp->c = malloc(sizeof(int));
+	*tmp->c = 0;
+	tmp->g = malloc(sizeof(int));
+	*tmp->g = 0;
+	tmp->d = malloc(sizeof(int));
+	*tmp->d = 0;
+	tmp->h = malloc(sizeof(int));
+	*tmp->h = 0;
+	tmp->j = malloc(sizeof(int));
+	*tmp->j = 0;
+	tmp->k = malloc(sizeof(int));
+	*tmp->k = 0;
 }

@@ -6,13 +6,13 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:06:14 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/26 10:03:46 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/26 11:31:03 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int 	*find_p(int n, t_list *lst, int phase)
+static int	*find_p(int n, t_list *lst, int phase)
 {
 	t_list	*aux;
 	int		*i;
@@ -31,7 +31,7 @@ static int 	*find_p(int n, t_list *lst, int phase)
 		else
 		{
 			if ((phase == 0 && *i < n && *i > *target)
-			|| (phase == 1 && *i > n && *i < *target))
+				|| (phase == 1 && *i > n && *i < *target))
 				target = i;
 		}
 		aux = aux->next;
@@ -51,10 +51,12 @@ static t_list	*get_cheapest(t_list *tmp_act, t_list *cheapest_act, int stack)
 		ft_lstclear(&cheapest_act, (void *)ft_delete);
 		cheapest_act = tmp_act;
 	}
+	else
+		ft_lstclear(&tmp_act, (void *)ft_delete);
 	return (cheapest_act);
 }
 
-t_list	*calculate_push_back(m_stack *stk, int *max, int *min)
+t_list	*calculate_push_back(t_stack *stk, int *max, int *min)
 {
 	t_list	*cheapest_action;
 	t_list	*tmp_act;
@@ -83,7 +85,7 @@ t_list	*calculate_push_back(m_stack *stk, int *max, int *min)
 	return (cheapest_action);
 }
 
-t_list	*calculate_moves(m_stack *stk, int *max, int *min)
+t_list	*calculate_moves(t_stack *stk, int *max, int *min)
 {
 	t_list	*cheapest_action;
 	t_list	*tmp_act;

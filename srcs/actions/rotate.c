@@ -6,13 +6,13 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 14:55:23 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/25 13:14:01 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/26 11:34:39 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rotate_a(m_stack *stk, int check)
+void	rotate_a(t_stack *stk, int check)
 {
 	t_list	*aux;
 	t_list	*f;
@@ -26,7 +26,7 @@ void	rotate_a(m_stack *stk, int check)
 		ft_printf("ra\n");
 }
 
-void	rotate_b(m_stack *stk, int check)
+void	rotate_b(t_stack *stk, int check)
 {
 	t_list	*aux;
 	t_list	*f;
@@ -40,7 +40,7 @@ void	rotate_b(m_stack *stk, int check)
 		ft_printf("rb\n");
 }
 
-void	rotate_r(m_stack *stk)
+void	rotate_r(t_stack *stk)
 {
 	rotate_a(stk, 1);
 	rotate_b(stk, 1);

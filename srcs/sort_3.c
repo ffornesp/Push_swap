@@ -6,13 +6,13 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 16:18:12 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/26 10:08:12 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/26 11:32:47 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_3(m_stack *stk)
+void	sort_3(t_stack *stk)
 {
 	int		*i;
 	int		*j;

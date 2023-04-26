@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:54:46 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/26 09:49:54 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/26 11:36:49 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ static void	add_actions(t_list **lst, int action, int times)
 	}
 }
 
-static t_list	*merge_actions(m_actions **acts)
+static t_list	*merge_actions(t_actions **acts)
 {
 	t_list		*lst;
-	m_actions	*actions;
+	t_actions	*actions;
 
 	actions = *acts;
 	lst = ft_lstnew(NULL);
@@ -46,16 +46,16 @@ static t_list	*merge_actions(m_actions **acts)
 	if (*actions->h > 0)
 		add_actions(&lst, 'H', *actions->h);
 	if (*actions->j > 0)
-		add_actions(&lst, 'J', *actions->j);	
+		add_actions(&lst, 'J', *actions->j);
 	if (*actions->k > 0)
 		add_actions(&lst, 'K', *actions->k);
 	return (lst);
 }
 
-static void	check_merge_2(t_list **lst, m_actions **acts)
+static void	check_merge_2(t_list **lst, t_actions **acts)
 {
 	t_list		*aux;
-	m_actions	*actions;
+	t_actions	*actions;
 
 	aux = *lst;
 	actions = *acts;
@@ -73,41 +73,20 @@ static void	check_merge_2(t_list **lst, m_actions **acts)
 	}
 	if (*actions->j > 0 || *actions->k > 0)
 	{
-		//ft_printf("Merge Actions\n");
 		*lst = merge_actions(acts);
 		ft_lstclear(&aux, (void *)ft_delete);
 	}
-	//ft_printf("Don't merge\n");
-}
-
-static void	initialize_actions(m_actions **actions)
-{
-	m_actions	*tmp;
-
-	tmp = *actions;
-	tmp->c = malloc(sizeof(int));
-	*tmp->c = 0;
-	tmp->g = malloc(sizeof(int));
-	*tmp->g = 0;
-	tmp->d = malloc(sizeof(int));
-	*tmp->d = 0;
-	tmp->h = malloc(sizeof(int));
-	*tmp->h = 0;
-	tmp->j = malloc(sizeof(int));
-	*tmp->j = 0;
-	tmp->k = malloc(sizeof(int));
-	*tmp->k = 0;
 }
 
 void	check_merge_rotation(t_list **lst)
 {
 	int			*tmp;
 	t_list		*aux;
-	m_actions	*actions;
+	t_actions	*actions;
 
 	aux = *lst;
-	actions = malloc(sizeof(m_actions));
-	initialize_actions(&actions);
+	actions = malloc(sizeof(t_actions));
+	actions_initialize(&actions);
 	while (aux)
 	{
 		tmp = aux->content;
@@ -125,4 +104,5 @@ void	check_merge_rotation(t_list **lst)
 		aux = aux->next;
 	}
 	check_merge_2(lst, &actions);
+	actions_clear(&actions);
 }

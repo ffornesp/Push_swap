@@ -6,13 +6,13 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 15:32:51 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/25 13:11:04 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/26 11:38:15 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	reverse_rotate_a(m_stack *stk, int check)
+void	reverse_rotate_a(t_stack *stk, int check)
 {
 	t_list	*lst;
 	t_list	*aux;
@@ -24,7 +24,7 @@ void	reverse_rotate_a(m_stack *stk, int check)
 	while (aux->next && i > 2)
 	{
 		aux = aux->next;
-		i--;	
+		i--;
 	}
 	aux->next = NULL;
 	lst->next = stk->stack_a;
@@ -33,7 +33,7 @@ void	reverse_rotate_a(m_stack *stk, int check)
 		ft_printf("rra\n");
 }
 
-void	reverse_rotate_b(m_stack *stk, int check)
+void	reverse_rotate_b(t_stack *stk, int check)
 {
 	t_list	*lst;
 	t_list	*aux;
@@ -45,7 +45,7 @@ void	reverse_rotate_b(m_stack *stk, int check)
 	while (aux->next && i > 2)
 	{
 		aux = aux->next;
-		i--;	
+		i--;
 	}
 	aux->next = NULL;
 	lst->next = stk->stack_b;
@@ -54,7 +54,7 @@ void	reverse_rotate_b(m_stack *stk, int check)
 		ft_printf("rrb\n");
 }
 
-void	reverse_rotate_r(m_stack *stk)
+void	reverse_rotate_r(t_stack *stk)
 {
 	reverse_rotate_a(stk, 1);
 	reverse_rotate_b(stk, 1);

@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_contents.c                                   :+:      :+:    :+:   */
+/*   actions_clear.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/24 09:48:23 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/24 09:51:15 by ffornes-         ###   ########.fr       */
+/*   Created: 2023/04/26 11:01:03 by ffornes-          #+#    #+#             */
+/*   Updated: 2023/04/26 11:30:06 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	check_stack(m_stack *stk)
+void	actions_clear(t_actions **actions)
 {
-	ft_printf(YELLOW"  STACK: A\n"WHITE);
-	check_list(stk->stack_a);
-	ft_printf(YELLOW"  STACK: B\n"WHITE);
-	check_list(stk->stack_b);
+	t_actions	*aux;
 
-	return ;
-}
-
-void	check_list(t_list *stack)
-{
-	t_list	*aux;
-	int		*i;
-
-	aux = stack;
-	while (aux)
-	{
-		i = aux->content;
-		ft_printf("      %d\n", *i);
-		aux = aux->next;
-	}
-	ft_printf(WHITE);
+	aux = *actions;
+	free(aux->c);
+	free(aux->g);
+	free(aux->d);
+	free(aux->h);
+	free(aux->j);
+	free(aux->k);
+	free(aux);
 }
