@@ -6,14 +6,12 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:06:14 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/26 09:47:35 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/26 10:03:46 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// There's error in phase 0 where it calculates it so fucking wrong it's
-// laughable
 static int 	*find_p(int n, t_list *lst, int phase)
 {
 	t_list	*aux;
