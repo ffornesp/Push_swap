@@ -6,7 +6,7 @@
 #    By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/24 19:51:17 by ffornes-          #+#    #+#              #
-#    Updated: 2023/04/24 13:12:13 by ffornes-         ###   ########.fr        #
+#    Updated: 2023/04/26 09:36:15 by ffornes-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SRC_FILES =	 push_swap.c \
 			 sort_3.c sort_any.c \
 			 calculate_move.c calculate_rotation.c \
 			 merge_actions.c \
-			 add_to_moves.c stk_limits.c \
+			 stk_limits.c \
 			 check_contents.c
 SRCS = 	$(addprefix $(SRCS_DIR), $(SRC_FILES))
 

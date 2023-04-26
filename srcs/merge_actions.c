@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:54:46 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/25 18:19:10 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/26 09:49:54 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static void	check_merge_2(t_list **lst, m_actions **acts)
 		*actions->d -= 1;
 		*actions->h -= 1;
 	}
-	if (*actions->g > 0 || *actions->k > 0)
+	if (*actions->j > 0 || *actions->k > 0)
 	{
 		//ft_printf("Merge Actions\n");
 		*lst = merge_actions(acts);
