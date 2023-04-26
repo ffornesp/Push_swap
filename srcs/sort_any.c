@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:01:28 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/26 11:33:07 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/26 11:55:19 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,21 +75,24 @@ void	init_sort(t_stack *stk)
 	int	min_b;
 	int	*tmp;
 
-	push_b(stk);
-	tmp = stk->stack_b->content;
-	max_b = *tmp;
-	min_b = *tmp;
-	if (ft_lstsize(stk->stack_a) > 3)
+	if (finish_check(stk) < 1)
 	{
 		push_b(stk);
-		stk_limits(stk->stack_b, &max_b, &min_b);
-		start_move(stk, &max_b, &min_b);
-	}
-	else if (ft_lstsize(stk->stack_a) > 0)
-	{
-		sort_3(stk);
-		push_back(stk);
-		rotate_finish(stk);
+		tmp = stk->stack_b->content;
+		max_b = *tmp;
+		min_b = *tmp;
+			if (ft_lstsize(stk->stack_a) > 3)
+		{
+			push_b(stk);
+			stk_limits(stk->stack_b, &max_b, &min_b);
+			start_move(stk, &max_b, &min_b);
+		}
+		else if (ft_lstsize(stk->stack_a) > 0)
+		{
+			sort_3(stk);
+			push_back(stk);
+			rotate_finish(stk);
+		}
 	}
 	tmp = NULL;
 	return ;
