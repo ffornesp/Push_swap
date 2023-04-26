@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 09:33:07 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/26 12:47:39 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/26 18:04:11 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void	push_swap(char	**str)
 			init_sort(stk);
 		ft_lstclear(&stk->stack_b, (void *)ft_delete);
 	}
-	ft_lstclear(&stk->stack_a, (void *)ft_delete);
+	if (stk->stack_a)
+		ft_lstclear(&stk->stack_a, (void *)ft_delete);
 	free(stk);
 	return ;
 }
