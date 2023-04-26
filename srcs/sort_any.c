@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:01:28 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/25 16:08:30 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/26 10:21:15 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ static void	rotate_finish(m_stack *stk)
 	max_a = *t;
 	min_a = *t;
 	stk_limits(aux, &max_a, &min_a);
-	while (*t != min_a)
+	while (finish_check(stk) < 1)//(*t >= min_a)
 	{
 		if (ft_lstpos(stk->stack_a, &min_a) < (ft_lstsize(stk->stack_a) / 2))
 			rotate_a(stk, 0);
-		else if (ft_lstpos(stk->stack_a, &min_a) > ft_lstsize(stk->stack_a)/2)
+		else if (ft_lstpos(stk->stack_a, &min_a) >= ft_lstsize(stk->stack_a)/2)
 			reverse_rotate_a(stk, 0);
 		t = stk->stack_a->content;
 	}

@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 16:18:12 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/25 13:15:11 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/26 10:08:12 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,20 @@ void	sort_3(m_stack *stk)
 
 	while (finish_check(stk) < 1)
 	{
-		i = stk->stack_a->content;
-		j = stk->stack_a->next->content;
-		k = stk->stack_a->next->next->content;
-		if (*j > *i && *j > *k)
-			reverse_rotate_a(stk, 0);
-		else if (*i > *j && *i > *k)
-			rotate_a(stk, 0);
-		else if (*i > *j && *i < *k)
+		if (ft_lstsize(stk->stack_a) < 3)
 			swap_a(stk, 0);
+		else
+		{
+			i = stk->stack_a->content;
+			j = stk->stack_a->next->content;
+			k = stk->stack_a->next->next->content;
+			if (*j > *i && *j > *k)
+				reverse_rotate_a(stk, 0);
+			else if (*i > *j && *i > *k)
+				rotate_a(stk, 0);
+			else if (*i > *j && *i < *k)
+				swap_a(stk, 0);
+		}
 	}
 	return ;
 }

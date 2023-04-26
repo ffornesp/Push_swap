@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 09:33:07 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/25 13:07:35 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/26 10:08:32 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	push_swap(char	**str)
 	stk->stack_a = parse(str);
 	stk->stack_b = NULL;
 	size = ft_lstsize(stk->stack_a);
-	if (size <= 3)
+	if (size > 1 && size <= 3)
 		sort_3(stk);
 	else
 		init_sort(stk);
