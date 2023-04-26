@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 16:24:47 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/26 11:37:35 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/26 13:10:40 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	push_swap(char **str);
 t_list	*parse(char **str);
 int		check_digits(char *str);
 int		check_duplicates(t_list *stack);
+int		ft_atol(const char *str);
 char	*check_zeros(char *input);
 int		finish_check(t_stack *stk);
 void	swap_a(t_stack *stk, int check);

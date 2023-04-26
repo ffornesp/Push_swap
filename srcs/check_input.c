@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_check.c                                      :+:      :+:    :+:   */
+/*   check_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 10:00:42 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/26 12:45:42 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/26 13:19:25 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,3 +84,84 @@ int	check_digits(char *str)
 	}
 	return (1);
 }
+
+static int	check_limits(long j)
+{
+	int	i;
+
+	if (j > INT_MAX || j < INT_MIN)
+		return (0);
+	else
+	{
+		i = j;
+		return (i);
+	}
+}
+
+int	ft_atol(const char *str)
+{
+	int		i;
+	long	j;
+
+	i = 0;
+	j = 0;
+	while (*str == ' ' || *str == '\t' || *str == '\n'
+		|| *str == '\v' || *str == '\f' || *str == '\r')
+		str++;
+	while (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			i++;
+		if (*(str + 1) == '+' || *(str + 1) == '-')
+			return (0);
+		str++;
+	}
+	while (ft_isdigit(*str))
+	{
+		j = (j * 10) + (*str - '0');
+		str++;
+	}
+	if (i > 0)
+		j *= -1;
+	return (check_limits(j));
+}
+
+/*
+static void	atol_2(const char **str, long *j, int i)
+{
+	const char	*aux;
+
+	aux = *str;
+	while (ft_isdigit(*aux))
+	{
+		*j = (*j * 10) + (*(aux - '0'));
+		aux++;
+	}
+	if (i > 0)
+		*j *= -1;
+	if (*j > INT_MAX || *j < INT_MIN)
+		j = 0;
+}
+
+int		ft_atol(const char *str)
+{
+	int		i;
+	long	j;
+
+	i = 0;
+	j = 0;
+	while (*str == ' ' || *str == '\t' || *str == '\n'
+		|| *str == '\v' || *str == '\f' || *str == '\r')
+		str++;
+	while (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			i++;
+		if (*(str + 1) == '+' || *(str + 1) == '-')
+			return (0);
+		str++;
+	}
+	atol_2(&str, &j, i);
+	i = j;
+	return (i);
+}*/
