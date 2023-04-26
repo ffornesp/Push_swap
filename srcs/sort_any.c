@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:01:28 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/26 17:09:17 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/26 17:27:10 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ static void	start_move(t_stack *stk)
 		limits = stk_limits(stk->stack_b);
 		actions = calculate_moves(stk, limits, 0);
 		parse_move(stk, actions);
+		free(limits);
 		limits = stk_limits(stk->stack_b);
 		ft_lstclear(&actions, (void *) ft_delete);
 		free(limits);
