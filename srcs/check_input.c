@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 10:00:42 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/26 12:15:40 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/26 12:45:42 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,13 @@ int	check_digits(char *str)
 	i = 0;
 	while (*(str + i))
 	{
-		if (ft_isdigit(*(str + i)) || *(str + i) == ' '
+		if (ft_isdigit(*(str + i - 1)) && (*(str + i) == '-' 
+				|| (*(str + i) == '+')))
+		{
+			free(str);
+			return (0);
+		}
+		else if (ft_isdigit(*(str + i)) || *(str + i) == ' '
 			|| ((*(str + i) == '-') && ft_isdigit(*(str + i + 1)))
 			|| ((*(str + i) == '+') && ft_isdigit(*(str + i + 1))))
 			i++;
