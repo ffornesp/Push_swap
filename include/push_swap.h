@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 16:24:47 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/26 16:06:55 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/26 17:05:49 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,5 @@ void	actions_initialize(t_actions **actions);
 void	actions_clear(t_actions **actions);
 void	add_push(t_list **action, int stack);
 void	parse_move(t_stack *stk, t_list *actions);
-void	stk_limits(t_list *lst, int *max, int *min);
+int		*stk_limits(t_list *lst);
 #endif

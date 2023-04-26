@@ -6,26 +6,28 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 16:12:59 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/25 11:23:25 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/26 17:06:52 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	stk_limits(t_list *lst, int *max, int *min)
+int	*stk_limits(t_list *lst)
 {
 	t_list	*aux;
-	int		*i;
+	int		*limits;
 
+	limits = malloc(sizeof(int) * 2);
 	aux = lst;
+	limits[0] = *(int *)aux->content;
+	limits[1] = *(int *)aux->content;
 	while (aux)
 	{
-		i = aux->content;
-		if (*i > *max)
-			*max = *i;
-		else if (*i < *min)
-			*min = *i;
+		if (*(int *)aux->content > limits[1])
+			limits[1] = *(int *)aux->content;
+		else if (*(int *)aux->content < limits[0])
+			limits[0] = *(int *)aux->content;
 		aux = aux->next;
 	}
-	return ;
+	return (limits);
 }
