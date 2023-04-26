@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:01:28 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/26 13:24:25 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/26 16:12:22 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,29 +38,28 @@ static void	rotate_finish(t_stack *stk)
 
 static void	push_back(t_stack *stk)
 {
-	int		max_a;
-	int		min_a;
-	int		*t;
 	t_list	*actions;
+	int		*limits;
 
-	t = stk->stack_a->content;
-	max_a = *t;
-	min_a = *t;
-	stk_limits(stk->stack_a, &max_a, &min_a);
-	actions = calculate_push_back(stk, &max_a, &min_a);
+	limits = malloc(sizeof(int) * 2);
+	limits[0] = *(int *)stk->stack_a->content;
+	limits[1] = *(int *)stk->stack_a->content;
+	stk_limits(stk->stack_a, &limits[1], &limits[0]);
+	actions = calculate_moves(stk, limits, 1);
 	parse_move(stk, actions);
 	ft_lstclear(&actions, (void *) ft_delete);
+	free(limits);
 }
 
-static void	start_move(t_stack *stk, int *max_b, int *min_b)
+static void	start_move(t_stack *stk, int *limits)
 {
 	t_list	*actions;
 
 	while (ft_lstsize(stk->stack_a) > 3)
 	{
-		actions = calculate_moves(stk, max_b, min_b);
+		actions = calculate_moves(stk, limits, 0);
 		parse_move(stk, actions);
-		stk_limits(stk->stack_b, max_b, min_b);
+		stk_limits(stk->stack_b, &limits[1], &limits[0]);
 		ft_lstclear(&actions, (void *) ft_delete);
 	}
 	sort_3(stk);
@@ -71,21 +70,19 @@ static void	start_move(t_stack *stk, int *max_b, int *min_b)
 
 void	init_sort(t_stack *stk)
 {
-	int	max_b;
-	int	min_b;
-	int	*tmp;
+	int	*limits;
 
 	if (finish_check(stk) < 1)
 	{
 		push_b(stk);
-		tmp = stk->stack_b->content;
-		max_b = *tmp;
-		min_b = *tmp;
+		limits = malloc(sizeof(int) * 2);
+		limits[0] = *(int *)stk->stack_b->content;
+		limits[1] = *(int *)stk->stack_b->content;
 		if (ft_lstsize(stk->stack_a) > 3)
 		{
 			push_b(stk);
-			stk_limits(stk->stack_b, &max_b, &min_b);
-			start_move(stk, &max_b, &min_b);
+			stk_limits(stk->stack_b, &limits[1], &limits[0]);
+			start_move(stk, limits);
 		}
 		else if (ft_lstsize(stk->stack_a) > 0)
 		{
@@ -93,7 +90,7 @@ void	init_sort(t_stack *stk)
 			push_back(stk);
 			rotate_finish(stk);
 		}
+		free(limits);
 	}
-	tmp = NULL;
 	return ;
 }

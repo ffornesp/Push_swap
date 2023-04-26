@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 16:24:47 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/26 13:10:40 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/26 16:06:55 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,7 @@ void	reverse_rotate_b(t_stack *stk, int check);
 void	reverse_rotate_r(t_stack *stk);
 void	sort_3(t_stack *stk);
 void	init_sort(t_stack *stk);
-t_list	*calculate_moves(t_stack *stk, int *max, int *min);
-t_list	*calculate_push_back(t_stack *stk, int *max, int *min);
+t_list	*calculate_moves(t_stack *stk, int *limits, int id);
 void	*calc_rot(t_list *lst, int *value, int stack, t_list **action);
 void	check_merge_rotation(t_list **lst);
 void	actions_initialize(t_actions **actions);

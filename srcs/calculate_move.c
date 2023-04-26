@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:06:14 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/26 11:31:03 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/26 16:13:59 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,59 +56,48 @@ static t_list	*get_cheapest(t_list *tmp_act, t_list *cheapest_act, int stack)
 	return (cheapest_act);
 }
 
-t_list	*calculate_push_back(t_stack *stk, int *max, int *min)
+static t_list	*get_temp(t_stack *stk, int *aux, int *limits, int id)
 {
-	t_list	*cheapest_action;
-	t_list	*tmp_act;
-	t_list	*aux;
-	int		*i;
+	t_list	*tmp;
 
-	aux = stk->stack_b;
-	cheapest_action = NULL;
-	while (aux)
+	tmp = ft_lstnew(NULL);
+	if (id == 0 && (*aux > limits[1] || *aux < limits[0]))
 	{
-		tmp_act = ft_lstnew(NULL);
-		i = aux->content;
-		if (*i > *max || *i < *min)
-		{
-			calc_rot(stk->stack_a, min, 0, &tmp_act);
-			calc_rot(stk->stack_b, i, 1, &tmp_act);
-		}
-		else
-		{
-			calc_rot(stk->stack_a, find_p(*i, stk->stack_a, 1), 0, &tmp_act);
-			calc_rot(stk->stack_b, i, 1, &tmp_act);
-		}
-		cheapest_action = get_cheapest(tmp_act, cheapest_action, 1);
-		aux = aux->next;
+		calc_rot(stk->stack_b, &limits[1], 1, &tmp);
+		calc_rot(stk->stack_a, aux, 0, &tmp);
 	}
-	return (cheapest_action);
+	else if (id == 0) 
+	{
+		calc_rot(stk->stack_b, find_p(*aux, stk->stack_b, 0), 1, &tmp);
+		calc_rot(stk->stack_a, aux, 0, &tmp);	
+	}
+	else if (id == 1 && (*aux > limits[1] || *aux < limits[0]))
+	{
+		calc_rot(stk->stack_a, &limits[0], 0, &tmp);
+		calc_rot(stk->stack_b, aux, 1, &tmp);
+	}
+	else if (id == 1)
+	{
+		calc_rot(stk->stack_a, find_p(*aux, stk->stack_a, 1), 0, &tmp);
+		calc_rot(stk->stack_b, aux, 1, &tmp);
+	}
+	return (tmp);
 }
 
-t_list	*calculate_moves(t_stack *stk, int *max, int *min)
+t_list	*calculate_moves(t_stack *stk, int *limits, int id)
 {
 	t_list	*cheapest_action;
-	t_list	*tmp_act;
+	t_list	*tmp;
 	t_list	*aux;
-	int		*i;
 
 	aux = stk->stack_a;
+	if (id == 1)
+		aux = stk->stack_b;
 	cheapest_action = NULL;
 	while (aux)
 	{
-		tmp_act = ft_lstnew(NULL);
-		i = aux->content;
-		if (*i > *max || *i < *min)
-		{
-			calc_rot(stk->stack_b, max, 1, &tmp_act);
-			calc_rot(stk->stack_a, i, 0, &tmp_act);
-		}
-		else
-		{
-			calc_rot(stk->stack_b, find_p(*i, stk->stack_b, 0), 1, &tmp_act);
-			calc_rot(stk->stack_a, i, 0, &tmp_act);
-		}
-		cheapest_action = get_cheapest(tmp_act, cheapest_action, 0);
+		tmp = get_temp(stk, aux->content, limits, id);
+		cheapest_action = get_cheapest(tmp, cheapest_action, id);
 		aux = aux->next;
 	}
 	return (cheapest_action);
