@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:01:28 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/26 11:55:19 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/26 13:24:25 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	init_sort(t_stack *stk)
 		tmp = stk->stack_b->content;
 		max_b = *tmp;
 		min_b = *tmp;
-			if (ft_lstsize(stk->stack_a) > 3)
+		if (ft_lstsize(stk->stack_a) > 3)
 		{
 			push_b(stk);
 			stk_limits(stk->stack_b, &max_b, &min_b);
