@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 16:24:47 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/27 09:50:07 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/27 11:42:08 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,20 +40,20 @@ int		check_duplicates(t_list *stack);
 int		ft_atol(const char *str);
 char	*check_zeros(char *input);
 
-void	swap_a(t_stack *stk, int check);
-void	swap_b(t_stack *stk, int check);
-void	swap_s(t_stack *stk);
+void	swap_a(t_stack *stk, int print);
+void	swap_b(t_stack *stk, int print);
+void	swap_s(t_stack *stk, int print);
 
-void	push_a(t_stack *stk);
-void	push_b(t_stack *stk);
+void	push_a(t_stack *stk, int print);
+void	push_b(t_stack *stk, int print);
 
-void	rotate_a(t_stack *stk, int check);
-void	rotate_b(t_stack *stk, int check);
-void	rotate_r(t_stack *stk);
+void	rotate_a(t_stack *stk, int print);
+void	rotate_b(t_stack *stk, int print);
+void	rotate_r(t_stack *stk, int print);
 
-void	reverse_rotate_a(t_stack *stk, int check);
-void	reverse_rotate_b(t_stack *stk, int check);
-void	reverse_rotate_r(t_stack *stk);
+void	reverse_rotate_a(t_stack *stk, int print);
+void	reverse_rotate_b(t_stack *stk, int print);
+void	reverse_rotate_r(t_stack *stk, int print);
 
 void	sort_3(t_stack *stk);
 void	init_sort(t_stack *stk);

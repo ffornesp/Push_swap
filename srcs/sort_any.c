@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:01:28 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/26 17:27:10 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/27 11:48:20 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ static void	rotate_finish(t_stack *stk)
 	while (finish_check(stk) < 1)
 	{
 		if (ft_lstpos(stk->stack_a, &limits[0]) < size)
-			rotate_a(stk, 0);
+			rotate_a(stk, 1);
 		else if (ft_lstpos(stk->stack_a, &limits[0]) >= size)
-			reverse_rotate_a(stk, 0);
+			reverse_rotate_a(stk, 1);
 	}
 	free(limits);
 }
@@ -71,10 +71,10 @@ void	init_sort(t_stack *stk)
 
 	if (finish_check(stk) < 1)
 	{
-		push_b(stk);
+		push_b(stk, 1);
 		if (ft_lstsize(stk->stack_a) > 3)
 		{
-			push_b(stk);
+			push_b(stk, 1);
 			limits = stk_limits(stk->stack_b);
 			start_move(stk);
 			free(limits);
