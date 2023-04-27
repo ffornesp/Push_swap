@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 16:18:12 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/27 11:45:45 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/27 11:52:44 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	sort_3(t_stack *stk)
 	while (finish_check(stk) < 1)
 	{
 		if (ft_lstsize(stk->stack_a) < 3)
-			swap_a(stk, 0);
+			swap_a(stk, 1);
 		else
 		{
 			i = stk->stack_a->content;
