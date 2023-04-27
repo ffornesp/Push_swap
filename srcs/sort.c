@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:01:28 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/27 13:17:31 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/27 13:39:26 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,22 +109,11 @@ void	sort_3(t_stack *stk)
 
 void	init_sort(t_stack *stk)
 {
-	int	*limits;
-
 	if (finish_check(stk) < 1)
 	{
 		push_b(stk, 1);
 		if (ft_lstsize(stk->stack_a) > 3)
-		{
 			push_b(stk, 1);
-			limits = stk_limits(stk->stack_b);
-			start_move(stk);
-			free(limits);
-		}
-		else if (ft_lstsize(stk->stack_a) > 0)
-		{
-			start_move(stk);
-			rotate_finish(stk);
-		}
+		start_move(stk);
 	}
 }
