@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 16:24:47 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/26 17:25:56 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/27 09:50:07 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ t_list	*calculate_moves(t_stack *stk, int *limits, int id);
 void	*calc_rot(t_list *lst, int *value, int stack, t_list **action);
 void	check_merge_rotation(t_list **lst);
 
-void	actions_initialize(t_actions **actions);
+void	actions_init(t_actions **actions);
 void	add_actions(t_list **lst, int action, int times);
 void	actions_clear(t_actions **actions);
 

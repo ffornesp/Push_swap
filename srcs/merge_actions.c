@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:54:46 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/26 17:19:10 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/27 09:50:49 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	check_merge_rotation(t_list **lst)
 
 	aux = *lst;
 	actions = malloc(sizeof(t_actions));
-	actions_initialize(&actions);
+	actions_init(&actions);
 	while (aux)
 	{
 		tmp = aux->content;

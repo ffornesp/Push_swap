@@ -6,13 +6,13 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 11:00:08 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/26 11:30:19 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/27 09:50:39 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	actions_initialize(t_actions **actions)
+void	actions_init(t_actions **actions)
 {
 	t_actions	*tmp;
 

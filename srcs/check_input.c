@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 10:00:42 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/26 18:10:45 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/27 09:53:09 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,14 @@ int	check_duplicates(t_list *stack)
 {
 	t_list	*aux;
 	t_list	*current;
-	int		*i;
 	int		*j;
 
 	current = stack;
 	aux = current->next;
 	while (aux)
 	{
-		i = current->content;
 		j = aux->content;
-		if (*i == *j)
+		if (*(int *)current->content == *j)
 			return (0);
 		if (aux->next)
 			aux = aux->next;
