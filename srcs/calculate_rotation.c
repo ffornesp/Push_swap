@@ -6,11 +6,13 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 15:29:59 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/27 11:57:08 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/27 13:12:11 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "action_defs.h"
+#include <stdlib.h>
 
 static void	fill_list(t_list **lst, int amount, int *value)
 {

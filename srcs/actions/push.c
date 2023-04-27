@@ -6,10 +6,12 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 13:03:17 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/27 11:42:35 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/27 12:55:15 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+#include "ft_printf.h"
 #include "push_swap.h"
 
 void	push_a(t_stack *stk, int print)

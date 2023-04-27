@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:06:14 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/27 12:24:54 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/27 13:12:05 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int	*find_p(int n, t_list *lst, int phase)
 static t_list	*get_cheapest(t_list *tmp_act, t_list *cheapest_act, int stack)
 {
 	if (ft_lstsize(tmp_act) > 1)
-		check_merge_rotation(&tmp_act);
+		check_merge(&tmp_act);
 	add_push(&tmp_act, stack);
 	if (!cheapest_act)
 		cheapest_act = tmp_act;

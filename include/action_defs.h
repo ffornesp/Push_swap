@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   actions_clear.c                                    :+:      :+:    :+:   */
+/*   action_defs.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/26 11:01:03 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/27 11:56:01 by ffornes-         ###   ########.fr       */
+/*   Created: 2023/04/27 12:52:31 by ffornes-          #+#    #+#             */
+/*   Updated: 2023/04/27 13:24:21 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef ACTION_DEFS_H
+# define ACTION_DEFS_H
 
-void	actions_clear(t_actions **actions)
-{
-	t_actions	*aux;
-
-	aux = *actions;
-	free(aux->ra);
-	free(aux->rb);
-	free(aux->rra);
-	free(aux->rrb);
-	free(aux->rr);
-	free(aux->rrr);
-	free(aux);
-}
+# define SWAP_A 'A'
+# define PUSH_A 'B'
+# define ROTATE_A 'C'
+# define REV_ROTATE_A 'D'
+# define SWAP_B 'E'
+# define PUSH_B 'F'
+# define ROTATE_B 'G'
+# define REV_ROTATE_B 'H'
+# define SWAP_S 'I'
+# define ROTATE_R 'J'
+# define REV_ROTATE_R 'K'
+#endif

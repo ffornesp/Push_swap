@@ -6,10 +6,12 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 09:44:12 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/27 11:44:46 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/27 12:56:36 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+#include "ft_printf.h"
 #include "push_swap.h"
 
 static t_list	*swap(t_list *stack)

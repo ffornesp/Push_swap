@@ -6,11 +6,14 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:54:46 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/27 12:10:38 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/27 13:18:08 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
+#include "action_lst.h"
+#include "action_defs.h"
+#include <stdlib.h>
 
 static void	add_actions(t_list	**lst, int action, int times)
 {
@@ -78,7 +81,7 @@ static void	check_merge_2(t_list **lst, t_actions **acts)
 	}
 }
 
-void	check_merge_rotation(t_list **lst)
+void	check_merge(t_list **lst)
 {
 	int			*tmp;
 	t_list		*aux;

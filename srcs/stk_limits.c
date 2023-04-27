@@ -6,11 +6,12 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 16:12:59 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/26 17:06:52 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/27 13:31:58 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
+#include <stdlib.h>
 
 int	*stk_limits(t_list *lst)
 {

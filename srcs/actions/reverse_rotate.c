@@ -6,10 +6,12 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 15:32:51 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/27 11:46:28 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/27 12:55:31 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+#include "ft_printf.h"
 #include "push_swap.h"
 
 void	reverse_rotate_a(t_stack *stk, int print)
