@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:06:14 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/27 11:45:30 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/27 12:00:17 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,21 @@ void	parse_move(t_stack *stk, t_list *actions)
 	while (aux)
 	{
 		act = aux->content;
-		if (*act == 'B')
+		if (*act == PUSH_A)
 			push_a(stk, 1);
-		else if (*act == 'F')
+		else if (*act == PUSH_B)
 			push_b(stk, 1);
-		else if (*act == 'C')
+		else if (*act == ROTATE_A)
 			rotate_a(stk, 1);
-		else if (*act == 'G')
+		else if (*act == ROTATE_B)
 			rotate_b(stk, 1);
-		else if (*act == 'J')
+		else if (*act == ROTATE_R)
 			rotate_r(stk, 1);
-		else if (*act == 'D')
+		else if (*act == REV_ROTATE_A)
 			reverse_rotate_a(stk, 1);
-		else if (*act == 'H')
+		else if (*act == REV_ROTATE_B)
 			reverse_rotate_b(stk, 1);
-		else if (*act == 'K')
+		else if (*act == REV_ROTATE_R)
 			reverse_rotate_r(stk, 1);
 		aux = aux->next;
 	}

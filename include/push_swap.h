@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 16:24:47 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/27 11:42:08 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/27 12:10:18 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,18 @@
 # include "ft_printf.h"
 # include <limits.h>
 
+# define SWAP_A 'A'
+# define PUSH_A 'B'
+# define ROTATE_A 'C'
+# define REV_ROTATE_A 'D'
+# define SWAP_B 'E'
+# define PUSH_B 'F'
+# define ROTATE_B 'G'
+# define REV_ROTATE_B 'H'
+# define SWAP_S 'I'
+# define ROTATE_R 'J'
+# define REV_ROTATE_R 'K'
+
 typedef struct lst_stack
 {
 	t_list	*stack_a;
@@ -24,12 +36,12 @@ typedef struct lst_stack
 
 typedef struct lst_actions
 {
-	int	*c;
-	int	*g;
-	int	*d;
-	int	*h;
-	int	*j;
-	int	*k;
+	int	*ra;
+	int	*rb;
+	int	*rra;
+	int	*rrb;
+	int	*rr;
+	int	*rrr;
 }	t_actions;
 
 void	push_swap(char **str);
@@ -63,7 +75,6 @@ void	*calc_rot(t_list *lst, int *value, int stack, t_list **action);
 void	check_merge_rotation(t_list **lst);
 
 void	actions_init(t_actions **actions);
-void	add_actions(t_list **lst, int action, int times);
 void	actions_clear(t_actions **actions);
 
 void	add_push(t_list **action, int stack);

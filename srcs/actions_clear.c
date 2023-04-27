@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 11:01:03 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/26 11:30:06 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/27 11:56:01 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ void	actions_clear(t_actions **actions)
 	t_actions	*aux;
 
 	aux = *actions;
-	free(aux->c);
-	free(aux->g);
-	free(aux->d);
-	free(aux->h);
-	free(aux->j);
-	free(aux->k);
+	free(aux->ra);
+	free(aux->rb);
+	free(aux->rra);
+	free(aux->rrb);
+	free(aux->rr);
+	free(aux->rrr);
 	free(aux);
 }
