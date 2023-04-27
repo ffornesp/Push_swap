@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:06:14 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/26 17:24:37 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/27 12:24:54 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ static t_list	*get_temp(t_stack *stk, int *aux, int *limits, int id)
 		calc_rot(stk->stack_b, &limits[1], 1, &tmp);
 		calc_rot(stk->stack_a, aux, 0, &tmp);
 	}
-	else if (id == 0) 
+	else if (id == 0)
 	{
 		calc_rot(stk->stack_b, find_p(*aux, stk->stack_b, 0), 1, &tmp);
-		calc_rot(stk->stack_a, aux, 0, &tmp);	
+		calc_rot(stk->stack_a, aux, 0, &tmp);
 	}
 	else if (id == 1 && (*aux > limits[1] || *aux < limits[0]))
 	{
