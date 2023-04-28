@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 10:38:06 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/28 13:04:02 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/28 15:49:09 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 static void	end_ex(t_stack *stk)
 {
 	ft_lstclear(&stk->stack_a, (void *)ft_delete);
-	ft_lstclear(&stk->stack_b, (void *)ft_delete);
 	free(stk);
 }
 
@@ -61,31 +60,48 @@ static int	run_actions(char *line, t_stack *stk)
 	return (0);
 }
 
-int	main(int argc, char *argv[])
+static void	checker(t_stack *stk)
 {
 	char	*line;
-	t_stack	*stk;
 
-	if (argc < 2)
-		return (0);
-	stk = malloc(sizeof(t_stack));
-	stk->stack_a = parse(argv);
-	if (stk->stack_a)
+	if (stk->stack_a && ft_lstsize(stk->stack_a) > 1)
 	{
-		line = get_next_line(0);
-		while (line)
+		if (!finish_check(stk))
 		{
-			if (run_actions(line, stk))
-				break ;
-			free(line);
 			line = get_next_line(0);
+			while (line)
+			{
+				if (run_actions(line, stk))
+				{
+					ft_putstr_fd("Error\n", 2);
+					return ;
+				}
+				free(line);
+				line = get_next_line(0);
+			}
 		}
 	}
 	else
 	{
 		free(stk);
-		return (0);
+		return ;
 	}
 	end_check(stk);
+}
+
+int	main(int argc, char *argv[])
+{
+	t_stack	*stk;
+
+	if (argc < 2)
+		return (0);
+	if (*argv[1] == '\0')
+	{
+		ft_putstr_fd("Error\n", 2);
+		return (0);
+	}
+	stk = malloc(sizeof(t_stack));
+	stk->stack_a = parse(argv);
+	checker(stk);
 	return (0);
 }
