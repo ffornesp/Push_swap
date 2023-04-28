@@ -6,14 +6,14 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 16:43:37 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/28 13:02:38 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/28 15:56:11 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-#include <stdarg.h>
+# include <stdarg.h>
 
 int		ft_printf(const char *str, ...);
 int		print_c(va_list args, int count);
