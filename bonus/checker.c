@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 10:38:06 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/28 15:49:09 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/28 16:01:27 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,21 +64,18 @@ static void	checker(t_stack *stk)
 {
 	char	*line;
 
-	if (stk->stack_a && ft_lstsize(stk->stack_a) > 1)
+	if (stk->stack_a)
 	{
-		if (!finish_check(stk))
+		line = get_next_line(0);
+		while (line)
 		{
-			line = get_next_line(0);
-			while (line)
+			if (run_actions(line, stk))
 			{
-				if (run_actions(line, stk))
-				{
-					ft_putstr_fd("Error\n", 2);
-					return ;
-				}
-				free(line);
-				line = get_next_line(0);
+				ft_putstr_fd("Error\n", 2);
+				return ;
 			}
+			free(line);
+			line = get_next_line(0);
 		}
 	}
 	else
