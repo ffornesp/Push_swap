@@ -6,11 +6,11 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 13:53:12 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/14 10:48:49 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/28 12:45:28 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 
 static void	calc_size(long int n, size_t *size)
 {

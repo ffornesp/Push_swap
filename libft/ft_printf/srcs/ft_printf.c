@@ -6,11 +6,13 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:18:22 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/14 10:44:12 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/28 12:59:27 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/ft_printf.h"
+#include "libft.h"
+#include "ft_printf.h"
+#include <stdarg.h>
 
 static int	convert(char *str, va_list args, int count)
 {

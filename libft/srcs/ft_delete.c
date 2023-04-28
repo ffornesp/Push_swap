@@ -6,11 +6,11 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 16:44:55 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/18 16:47:10 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/28 12:44:06 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 
 void	*ft_delete(void *p)
 {

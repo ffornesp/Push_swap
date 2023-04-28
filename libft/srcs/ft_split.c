@@ -6,11 +6,12 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 13:19:01 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/14 10:52:55 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/28 12:49:16 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
 static char	**save_string(const char *s, char c, size_t n, int j)
 {

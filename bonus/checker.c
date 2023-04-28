@@ -6,13 +6,12 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 10:38:06 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/28 12:32:30 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/28 13:04:02 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "get_next_line.h"
-#include "ft_printf.h"
 #include "push_swap.h"
 #include <stdlib.h>
 #include <unistd.h>
@@ -27,9 +26,9 @@ static void	end_ex(t_stack *stk)
 static void	end_check(t_stack *stk)
 {
 	if (finish_check(stk))
-		ft_printf("OK\n");
+		ft_putstr_fd("OK\n", 1);
 	else if (!finish_check(stk))
-		ft_printf("KO\n");
+		ft_putstr_fd("KO\n", 1);
 	end_ex(stk);
 }
 

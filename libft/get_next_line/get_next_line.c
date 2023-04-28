@@ -6,37 +6,16 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:19:28 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/28 12:15:58 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/28 13:03:07 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "get_next_line.h"
+#include <stdlib.h>
+#include <unistd.h>
 
-char	*get_next_line(int fd)
-{
-	char		*buffer;
-	char		*line;
-	static char	*aux;
-
-	if (fd < 0 || fd > 1024 || BUFFER_SIZE <= 0)
-		return (NULL);
-	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!buffer)
-		return (NULL);
-	aux = read_to_buff(fd, buffer, aux);
-	line = get_line(aux);
-	aux = save_remains(aux);
-	if (!line || !*line)
-	{
-		if (line)
-			free(line);
-		free(aux);
-		return (NULL);
-	}
-	return (line);
-}
-
-char	*read_to_buff(int fd, char *buffer, char *line)
+static char	*read_to_buff(int fd, char *buffer, char *line)
 {
 	int	i;
 
@@ -56,7 +35,7 @@ char	*read_to_buff(int fd, char *buffer, char *line)
 	return (line);
 }
 
-char	*get_line(char *str)
+static char	*get_line(char *str)
 {
 	int		i;
 	char	*line;
@@ -75,7 +54,7 @@ char	*get_line(char *str)
 	return (line);
 }
 
-char	*save_remains(char *str)
+static char	*save_remains(char *str)
 {
 	char	*aux;
 	size_t	i;
@@ -101,3 +80,28 @@ char	*save_remains(char *str)
 	free(str);
 	return (aux);
 }
+
+char	*get_next_line(int fd)
+{
+	char		*buffer;
+	char		*line;
+	static char	*aux;
+
+	if (fd < 0 || fd > 1024 || BUFFER_SIZE <= 0)
+		return (NULL);
+	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buffer)
+		return (NULL);
+	aux = read_to_buff(fd, buffer, aux);
+	line = get_line(aux);
+	aux = save_remains(aux);
+	if (!line || !*line)
+	{
+		if (line)
+			free(line);
+		free(aux);
+		return (NULL);
+	}
+	return (line);
+}
+

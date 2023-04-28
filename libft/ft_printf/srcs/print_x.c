@@ -6,11 +6,12 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:39:26 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/14 10:45:25 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/28 13:01:08 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/ft_printf.h"
+#include "libft.h"
+#include <stdarg.h>
 
 int	print_x(va_list args, int count, char x)
 {
