@@ -6,14 +6,14 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 16:24:47 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/27 13:09:53 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/28 12:35:49 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+
+# include "libft.h"
 
 typedef struct lst_stack
 {
@@ -46,12 +46,13 @@ void	reverse_rotate_r(t_stack *stk, int print);
 
 void	sort_3(t_stack *stk);
 void	init_sort(t_stack *stk);
+
 int		*stk_limits(t_list *lst);
 t_list	*calculate_moves(t_stack *stk, int *limits, int id);
 void	*calc_rot(t_list *lst, int *value, int stack, t_list **action);
 void	check_merge(t_list **lst);
-
 void	add_push(t_list **action, int stack);
 
 void	parse_move(t_stack *stk, t_list *actions);
+int		finish_check(t_stack *stk);
 #endif

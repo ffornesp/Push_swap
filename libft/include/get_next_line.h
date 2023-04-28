@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:21:05 by ffornes-          #+#    #+#             */
-/*   Updated: 2022/09/13 16:14:29 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/28 10:49:38 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 
 # include "libft.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1000
-# endif
+# define BUFFER_SIZE 1000
 
 char	*get_next_line(int fd);
 char	*read_to_buff(int fd, char *buffer, char *line);

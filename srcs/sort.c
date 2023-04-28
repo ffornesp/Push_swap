@@ -6,14 +6,14 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:01:28 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/27 13:39:26 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/04/28 09:51:56 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdlib.h>
 
-static int	finish_check(t_stack *stk)
+int	finish_check(t_stack *stk)
 {
 	int		*max;
 	int		*min;
