@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 10:38:06 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/05/01 10:02:19 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/05/01 14:53:12 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,15 @@
 static void	end_ex(t_stack *stk)
 {
 	ft_lstclear(&stk->stack_a, (void *)ft_delete);
+	ft_lstclear(&stk->stack_b, (void *)ft_delete);
 	free(stk);
 }
 
 static void	end_check(t_stack *stk)
 {
-	if (finish_check(stk))
+	if (finish_check(stk) && ft_lstsize(stk->stack_b) < 1)
 		ft_putstr_fd("OK\n", 1);
-	else if (!finish_check(stk))
+	else if (!finish_check(stk) || ft_lstsize(stk->stack_b) > 0)
 		ft_putstr_fd("KO\n", 1);
 	end_ex(stk);
 }
@@ -79,6 +80,7 @@ static void	checker(t_stack *stk)
 			free(line);
 			line = get_next_line(0);
 		}
+		free(line);
 	}
 	else
 	{
@@ -101,6 +103,7 @@ int	main(int argc, char *argv[])
 	}
 	stk = malloc(sizeof(t_stack));
 	stk->stack_a = parse(argv);
+	stk->stack_b = NULL;
 	checker(stk);
 	return (0);
 }
