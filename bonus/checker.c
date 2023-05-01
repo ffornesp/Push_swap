@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 10:38:06 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/28 16:01:27 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/05/01 10:02:19 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ static void	checker(t_stack *stk)
 			if (run_actions(line, stk))
 			{
 				ft_putstr_fd("Error\n", 2);
+				end_ex(stk);
+				free(line);
 				return ;
 			}
 			free(line);
