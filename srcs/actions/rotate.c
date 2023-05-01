@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 14:55:23 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/27 12:55:50 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/05/01 09:49:56 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,14 @@ void	rotate_a(t_stack *stk, int print)
 	t_list	*aux;
 	t_list	*f;
 
-	aux = stk->stack_a;
-	stk->stack_a = stk->stack_a->next;
-	f = ft_lstlast(stk->stack_a);
-	aux->next = NULL;
-	f->next = aux;
+	if (ft_lstsize(stk->stack_a) > 1)
+	{
+		aux = stk->stack_a;
+		stk->stack_a = stk->stack_a->next;
+		f = ft_lstlast(stk->stack_a);
+		aux->next = NULL;
+		f->next = aux;
+	}
 	if (print > 0)
 		ft_printf("ra\n");
 }
@@ -33,11 +36,14 @@ void	rotate_b(t_stack *stk, int print)
 	t_list	*aux;
 	t_list	*f;
 
-	aux = stk->stack_b;
-	stk->stack_b = stk->stack_b->next;
-	f = ft_lstlast(stk->stack_b);
-	aux->next = NULL;
-	f->next = aux;
+	if (ft_lstsize(stk->stack_b) > 1)
+	{
+		aux = stk->stack_b;
+		stk->stack_b = stk->stack_b->next;
+		f = ft_lstlast(stk->stack_b);
+		aux->next = NULL;
+		f->next = aux;
+	}
 	if (print > 0)
 		ft_printf("rb\n");
 }

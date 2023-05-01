@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 15:32:51 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/27 12:55:31 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/05/01 09:48:37 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,20 @@ void	reverse_rotate_a(t_stack *stk, int print)
 	t_list	*aux;
 	int		i;
 
-	aux = stk->stack_a;
-	lst = ft_lstlast(aux);
-	i = ft_lstsize(aux);
-	while (aux->next && i > 2)
+	if (ft_lstsize(stk->stack_a) > 1)
 	{
-		aux = aux->next;
-		i--;
+		aux = stk->stack_a;
+		lst = ft_lstlast(aux);
+		i = ft_lstsize(aux);
+		while (aux->next && i > 2)
+		{
+			aux = aux->next;
+			i--;
+		}
+		aux->next = NULL;
+		lst->next = stk->stack_a;
+		stk->stack_a = lst;
 	}
-	aux->next = NULL;
-	lst->next = stk->stack_a;
-	stk->stack_a = lst;
 	if (print > 0)
 		ft_printf("rra\n");
 }
@@ -41,17 +44,20 @@ void	reverse_rotate_b(t_stack *stk, int print)
 	t_list	*aux;
 	int		i;
 
-	aux = stk->stack_b;
-	lst = ft_lstlast(aux);
-	i = ft_lstsize(aux);
-	while (aux->next && i > 2)
+	if (ft_lstsize(stk->stack_b) > 1)
 	{
-		aux = aux->next;
-		i--;
+		aux = stk->stack_b;
+		lst = ft_lstlast(aux);
+		i = ft_lstsize(aux);
+		while (aux->next && i > 2)
+		{
+			aux = aux->next;
+			i--;
+		}
+		aux->next = NULL;
+		lst->next = stk->stack_b;
+		stk->stack_b = lst;
 	}
-	aux->next = NULL;
-	lst->next = stk->stack_b;
-	stk->stack_b = lst;
 	if (print > 0)
 		ft_printf("rrb\n");
 }
