@@ -6,7 +6,7 @@
 #    By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/24 19:51:17 by ffornes-          #+#    #+#              #
-#    Updated: 2023/04/28 15:58:36 by ffornes-         ###   ########.fr        #
+#    Updated: 2023/05/01 11:14:20 by ffornes-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,13 +78,13 @@ INCLUDE  = -I ./include/ -I ./libft/include/
 all: 		$(NAME)
 bonus:		$(NAME_BONUS)
 
-$(LIBFT_DIR)$(LIBFT_FILE):	$(LIBFT_DIR)
-			make -C $(LIBFT_DIR)
+m_libft:
+			@make -C $(LIBFT_DIR)
 
-$(NAME):	$(LIBFT_DIR)$(LIBFT_FILE) $(OBJS_DIR) $(OBJS) $(OBJS_ACTIONS_DIR) $(OBJS_ACTIONS)
-			$(CC) $(INCLUDE) $(OBJS) $(OBJS_ACTIONS) -lft -Llibft/ -o $@
-$(NAME_BONUS):	$(LIBFT_DIR)$(LIBFT_FILE) $(OBJS_DIR) $(OBJS_BONUS_PS) $(OBJS_ACTIONS_DIR) $(OBJS_ACTIONS) $(OBJS_BONUS_DIR) $(OBJS_BONUS)
-				$(CC) $(INCLUDE) $(OBJS_BONUS_PS) $(OBJS_ACTIONS) $(OBJS_BONUS) -lft -Llibft/ -o $@
+$(NAME):	m_libft $(OBJS_DIR) $(OBJS) $(OBJS_ACTIONS_DIR) $(OBJS_ACTIONS)
+			@$(CC) $(INCLUDE) $(OBJS) $(OBJS_ACTIONS) -Llibft/ -lft -o $@
+$(NAME_BONUS):	m_libft $(OBJS_DIR) $(OBJS_BONUS_PS) $(OBJS_ACTIONS_DIR) $(OBJS_ACTIONS) $(OBJS_BONUS_DIR) $(OBJS_BONUS)
+				@$(CC) $(INCLUDE) $(OBJS_BONUS_PS) $(OBJS_ACTIONS) $(OBJS_BONUS) $(LIBFT) -o $@
 
 $(OBJS_DIR):
 						@mkdir $@
