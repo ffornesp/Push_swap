@@ -6,12 +6,25 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 09:53:23 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/28 12:30:01 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/06/26 17:50:42 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdlib.h>
+
+static int	check_digit_amount(char **input)
+{
+	int	i;
+
+	i = 0;
+	while (input[i])
+	{
+		if (ft_strlen(input[i]) > 11)
+			return (1);
+	}
+	return (0);
+}
 
 static char	*join_input(char **input)
 {
@@ -26,6 +39,11 @@ static char	*join_input(char **input)
 	{
 		aux = out;
 		input[i] = check_zeros(input[i]);
+		if (check_digit_amount(input[i]))
+		{
+			free(input);
+			return (NULL)
+		}
 		out = ft_strjoin(out, " ");
 		free(aux);
 		aux = out;
