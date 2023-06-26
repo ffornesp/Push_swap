@@ -6,25 +6,12 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 09:53:23 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/06/26 17:50:42 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/06/26 18:46:51 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdlib.h>
-
-static int	check_digit_amount(char **input)
-{
-	int	i;
-
-	i = 0;
-	while (input[i])
-	{
-		if (ft_strlen(input[i]) > 11)
-			return (1);
-	}
-	return (0);
-}
 
 static char	*join_input(char **input)
 {
@@ -34,15 +21,17 @@ static char	*join_input(char **input)
 
 	i = 2;
 	out = malloc(sizeof(char *) * (ft_strlen(input[1]) + 1));
+	if (!out)
+		return (NULL);
 	ft_strlcpy(out, input[1], ft_strlen(input[1]) + 1);
 	while (input[i])
 	{
 		aux = out;
 		input[i] = check_zeros(input[i]);
-		if (check_digit_amount(input[i]))
+		if (ft_strlen(input[i]) > 11)
 		{
-			free(input);
-			return (NULL)
+			free(out);
+			return (NULL);
 		}
 		out = ft_strjoin(out, " ");
 		free(aux);
@@ -90,6 +79,11 @@ t_list	*parse(char **str)
 	t_list	*stack;
 
 	input = join_input(str);
+	if (!input)
+	{
+		ft_putstr_fd("Error\n", 2);
+		return (NULL);
+	}
 	if (check_digits(input) < 1)
 	{
 		ft_putstr_fd("Error\n", 2);

@@ -6,7 +6,7 @@
 /*   By: ffornes- <ffornes-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 10:00:42 by ffornes-          #+#    #+#             */
-/*   Updated: 2023/04/27 13:14:35 by ffornes-         ###   ########.fr       */
+/*   Updated: 2023/06/26 18:45:25 by ffornes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ char	*check_zeros(char *input)
 		else
 			input[0] = '0';
 	}
+	else if (input[0] == '0')
+		while (input[0] == '0' && input[1] != '\0')
+			input++;
 	return (input);
 }
 
